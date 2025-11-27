@@ -13,7 +13,7 @@ class UserPDO
 
     public function userVerify(string $user, string $pass): bool
     {
-        $consulta = "SELECT * FROM users WHERE name = :usuario AND pass = :pass";
+        $consulta = "SELECT * FROM user WHERE name = :usuario AND pass = :pass";
         $stmt = $this->db->prepare($consulta);
         $stmt->bindParam(':usuario', $user);
         $stmt->bindParam(':pass', $pass);
@@ -23,7 +23,7 @@ class UserPDO
 
     public function userCreate(string $user, string $pass): bool
     {
-        $consulta = "INSERT INTO users (name, pass) VALUES (:user, :pass)";
+        $consulta = "INSERT INTO user (name, pass) VALUES (:user, :pass)";
         $stmt = $this->db->prepare($consulta);
         $stmt->bindParam(':user', $user);
         $stmt->bindParam(':pass', $pass);
@@ -32,7 +32,7 @@ class UserPDO
 
     public function userDelete(User $user): bool
     {
-        $consulta = "DELETE FROM users WHERE name = :user";
+        $consulta = "DELETE FROM user WHERE name = :user";
         $stmt = $this->db->prepare($consulta);
         $stmt->bindParam(':user', $user->getNombre());
         return $stmt->execute();
@@ -40,7 +40,7 @@ class UserPDO
 
     public function userModify(User $user): bool
     {
-        $consulta = "UPDATE users SET name = :user, pass = :pass WHERE id = :id";
+        $consulta = "UPDATE user SET name = :user, pass = :pass WHERE id = :id";
         $stmt = $this->db->prepare($consulta);
         $stmt->bindParam(':user', $user->getNombre());
         $stmt->bindParam(':pass', $user->getClave());
