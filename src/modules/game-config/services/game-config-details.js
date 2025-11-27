@@ -1,25 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-    //Si se detecta un error al enviar el formulario
-    const gameConfigForm = document.querySelector("form");
-    const levelSelect = document.getElementById("level");
-    levelSelect.addEventListener("change", showDetails);
-    gameConfigForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const levelValue = document.getElementById("level").value;
-        const pve = document.getElementById("pve").checked;
-        console.log(pve);
-    });
-
-
-});
-
-function showDetails() {
-    console.log("FUNCIONA");
+export function showDetails() {
     const level = document.getElementById("level").value;
     const details = document.getElementById("details");
     details.innerHTML = "";
-    console.log(level);
     switch (level) {
         case "1":
             details.innerHTML = "<b>Nivel Fácil</b>: ideal para principiantes. <br>Permitidas todas las ayudas, sin contrarreloj y sin penalizaciones.";
