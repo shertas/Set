@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROYECTO SET</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>PROYECTO SET</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="welcome.html">Bienvenida</a></li>
+        <li><a href="/src/modules/game/views/game.html">Nuevo juego</a></li>
+        <li><a href="../../../views/game-config.html">Configuración de partida</a></li>
+        <li><a href="../../../views/user-ranking.html">Histórico de partidas</a></li>
+        <li><a href="../../../views/global-ranking.html">Ranking global</a></li>
+        <li><a href="../../../views/config-user.html">Configuración de usuario</a></li>
+        <li class="cerrar-sesion"><a href="login.html">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cuerpo">
+    <!-- Contenido principal de la página -->
+    <h1 class="titulo">Bienvenido a la web de Proyecto SET</h1>
+    <div style="text-align: justify">
+      <h3>Instrucciones</h3>
+      <p class="texto">Encontrar la mayor cantidad de <strong>sets</strong>. Un <em>set</em> es un grupo de tres cartas
+        donde cada característica, considerada por separado, es toda igual o toda diferente.</p>
+      <h3>Características de las cartas</h3>
+      <ul class="texto">
+        <li>Número: 1, 2 o 3 figuras</li>
+        <li>Forma: óvalo, rombo o curva</li>
+        <li>Color: rojo, verde o morado</li>
+        <li>Relleno: vacío, rayado o sólido</li>
+      </ul>
+
+      <h3>Regla principal</h3>
+      <p class="texto">Para formar un set, cada característica debe ser:</p>
+      <ul>
+        <li>Toda igual entre las tres cartas, o</li>
+        <li>Toda diferente entre las tres cartas.</li>
+      </ul>
+      <p>Si una característica coincide solo en dos cartas, no es un set.</p>
+
+      <h3>Fin del juego</h3>
+      <p>El juego termina cuando se acaba el mazo y ya no queda ningún set. Gana quien tenga más sets reunidos.</p>
+      <br>
+      <h3>Siguientes pasos:</h3>
+      <p>Para comenzar a jugar, pulsa <button><a href="partida.html">"Nuevo juego"</a></button></p>
+      <p>Para elegir la modalidad de la partida, pulsa <button><a href="configPartida.html">"Configuración de
+            partida"</a></button></p>
+      <p>Para ver el histórico de partidas, pulsa <button><a href="historico.html">"Histórico de partidas"</a></button>
+      </p>
+      <p>Para ver el ranking global, pulsa <button><a href="ranking.html">"Ranking global"</a></button> </p>
+      <p>Para modificar el usuario, pulsa <button><a href="config-user.html">"Configuración de usuario"</a></button>
+      </p>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO SET</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../game.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="../services/uiManager.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>PROYECTO SET</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="/src/modules/login/views/welcome.html">Bienvenida</a></li>
+                <li><a href="game.html">Nuevo juego</a></li>
+                <li><a href="/src/views/game-config.html">Configuración de partida</a></li>
+                <li><a href="/src/views/user-ranking.html">Histórico de partidas</a></li>
+                <li><a href="/src/views/global-ranking.html">Ranking global</a></li>
+                <li><a href="/src/views/config-user.html">Configuración de usuario</a></li>
+                <li class="cerrar-sesion"><a href="/src/modules/login/views/login.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <pattern id="stripesred" patternUnits="userSpaceOnUse" width="4" height="8">
+                <rect width="1" height="8" fill="red" />
+            </pattern>
+            <pattern id="stripespurple" patternUnits="userSpaceOnUse" width="4" height="8">
+                <rect width="1" height="8" fill="purple" />
+            </pattern>
+            <pattern id="stripesgreen" patternUnits="userSpaceOnUse" width="4" height="8">
+                <rect width="1" height="8" fill="green" />
+            </pattern>
+        </defs>
+    </svg>
+    <main class="cuerpo">
+        <!-- Contenido principal de la página -->
+        <h1 class="titulo">Partida</h1>
+        <div id="cardGrid"></div>
+    </main>
+</body>
+
+</html>

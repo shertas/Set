@@ -1,0 +1,112 @@
+# ======================================
+# ARCHIVOS DE CONFIGURACIÓN Y SECRETOS
+# ======================================
+
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos de configuración sensibles
+#config.php
+config/*.php
+
+# ======================================
+# DEPENDENCIAS Y PAQUETES
+# ======================================
+
+# Composer (PHP)
+vendor/
+
+# Node (React / frontend)
+node_modules/
+
+# ======================================
+# ARCHIVOS NUESTROS DEL PROYECTO
+# ======================================
+documents/
+# ======================================
+# CACHÉS Y ARCHIVOS TEMPORALES
+# ======================================
+
+# Caché general de PHP y frameworks
+*.cache
+*.tmp
+*.bak
+.cache/
+tmp/
+temp/
+
+# Caché de Blade, Twig u otros motores de plantilla
+/storage/framework/cache/
+storage/framework/views/
+
+# Caché de sesiones o rutas (si usas Laravel u otro framework PHP)
+bootstrap/cache/
+storage/logs/
+
+# ======================================
+# ARCHIVOS DE COMPILACIÓN FRONTEND
+# ======================================
+
+# React / Vite / Webpack / etc.
+dist/
+build/
+public/js/bundle.js
+public/css/*.map
+
+# ======================================
+# ARCHIVOS DE SISTEMA Y DEL EDITOR
+# ======================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ======================================
+# TESTS Y HERRAMIENTAS
+# ======================================
+
+# Cobertura de pruebas
+coverage/
+.phpunit.result.cache
+.phpunit.cache/
+.nyc_output/
+
+# ======================================
+# LOGS Y REGISTROS
+# ======================================
+
+*.log
+logs/
+error_log
+
+# ======================================
+# OTROS ARCHIVOS A IGNORAR
+# ======================================
+
+# Backups y archivos de base de datos
+*.sqlite
+*.bak
+*.old
+*.zip
+*.tar
+*.gz
+
+# IDEs y entornos varios
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ======================================
+# PERSONALIZADOS PARA TU PROYECTO
+# ======================================
+
+# Archivos de configuración local o pruebas temporales
+/local/
+tests_local/

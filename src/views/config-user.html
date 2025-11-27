@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO SET</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>PROYECTO SET</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="/src/modules/login/views/welcome.html">Bienvenida</a></li>
+                <li><a href="/src/modules/game/views/game.html">Nuevo juego</a></li>
+                <li><a href="game-config.html">Configuración de partida</a></li>
+                <li><a href="user-ranking.html">Histórico de partidas</a></li>
+                <li><a href="global-ranking.html">Ranking global</a></li>
+                <li><a href="config-user.html">Configuración de usuario</a></li>
+                <li class="cerrar-sesion"><a href="/src/modules/login/views/login.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cuerpo">
+        <!-- Contenido principal de la página -->
+        <h1 class="titulo">Configuración del Usuario</h1>
+        <form action="" method="POST">
+            <p>Usuario:</p>
+            <label for="nombreUsu">Nombre</label>
+            <input type="text" id="nombreUsu" name="nombreUsu">
+            <div style="padding: 10px;"></div>
+            <label for="passwordUsu">Contraseña</label>
+            <input type="text" id="passwordUsu" name="passwordUsu">
+            <div style="padding: 30px;"></div>
+            <input type="submit" id="enviar" value="Guardar cambios">
+            <input type="reset" value="Deshacer cambios">
+            <input type="submit" id="eliminar" value="Eliminar usuairo">
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px 0;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: #555;
+}
+
+.menu .cerrar-sesion {
+    margin-left: auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 0;
+}
+
+button a {
+    text-decoration: none;
+    color: black;
+}
+button:hover {
+    background-color: #555;
+}
+button a:hover {
+    background-color: #555;
+    color: black;
+}
+
+
+button input:hover {
+    background-color: #555;
+}
+
+/*---------------------------------*/
+/*------ ESTILOS DE TABLAS --------*/
+/*---------------------------------*/
+
+.tabla-partidas {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    color: #f2f2f2;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tabla-partidas thead {
+    background-color: #222;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-partidas th {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.tabla-partidas td {
+    padding: 10px 15px;
+    text-align: center;
+    border-top: 1px solid #444;
+}
+
+.tabla-partidas tbody tr:nth-child(even) {
+    background-color: #2a2a2a59;
+}
+
+.tabla-partidas tbody tr:hover {
+    background-color: #3a3a3a13;
+    transition: background-color 0.2s ease-in-out;
+}
