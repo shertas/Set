@@ -2,10 +2,10 @@
 Cada desarrollador debe:
 
 - Instalar dependencias: ejecutar `composer install` en la raíz del repositorio (una sola vez por máquina).
-- Crear su propio fichero de entorno copiando la plantilla `.env.example` a `.env` y rellenando las variables privadas (DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME). No subir `.env` al repo.
+- Crear su propio fichero de entorno `.env` y rellenando las variables privadas (DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME). No subir `.env` al repo.
 - Ejecutar la aplicación usando el método que prefiera:
   - Servidor embebido de PHP (rápido para desarrollo): `php -S localhost:8000 -t public`.
-  - XAMPP/Apache en Windows: crear un VirtualHost que apunte a la carpeta `.../ProyectoDAW/public` o mover el proyecto a `C:\xampp\htdocs` y acceder por la URL correspondiente, en mi caso es `http://localhost/ProyectoDAW/public/index.php`
+  - XAMPP/Apache en Windows: crear un VirtualHost que apunte a la carpeta `.../Set/public` o mover el proyecto a `C:\xampp\htdocs` y acceder por la URL correspondiente, en mi caso es `http://localhost/Set/public/index.php`
 
 
 Para comprobar rápidamente la conexión a la BD se puede ejecutar el script de verificación por CLI: `php public/index.php`.
@@ -18,8 +18,6 @@ Para comprobar rápidamente la conexión a la BD se puede ejecutar el script de 
 Test-NetConnection -ComputerName <DB_HOST> -Port <DB_PORT>
 ```
 
-## Archivos útiles añadidos
-- `.env.example`: plantilla con las variables de entorno (sin secretos).
 
 ## Troubleshooting rápido
 
@@ -33,5 +31,6 @@ Test-NetConnection -ComputerName <DB_HOST> -Port <DB_PORT>
 ## Buenas prácticas del equipo
 - Mantener `main` estable; usar ramas para features/fixes.
 - No subir `.env` ni `vendor/`.
+- Hacer commits descriptivos y semánticos, en inglés.
 
 
