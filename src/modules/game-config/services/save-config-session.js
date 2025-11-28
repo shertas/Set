@@ -1,5 +1,5 @@
 export function saveConfigSession(levelValue, pve) {
-    fetch("save-config-session.php", {
+    fetch("/src/modules/game-config/services/save-config-session.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ level: levelValue, pve: pve })
