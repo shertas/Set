@@ -1,11 +1,6 @@
-import { renderCard } from "./cardRenderer.js";
-export async function renderDeck(deck) {
-    const grid = $("#cardGrid");
-    grid.empty();
-
-    const cardsToShow = deck.slice(0, 12); // 12 cartas por ahora
-    for (const card of cardsToShow) {
-        const cardHTML = await renderCard(card);
-        grid.append(cardHTML);
-    }
+import { renderCards } from "./cardRenderer.js"
+export async function renderInGrid(deck, startIndex, cardsNumber) {
+    const cards = deck.slice(startIndex, startIndex + cardsNumber)
+    const newCards = await renderCards(cards)
+    return newCards
 }

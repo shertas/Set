@@ -1,48 +1,74 @@
-export async function renderCard(card) {
-  const svgContent = await loadSVG(`.././svg/${card.shape}.svg`);
-  let shapesHTML = "";
+export async function renderCards(cards) {
+  let position = 1
+  let cardsChanged = 0
+  let cardPlaced = false
+  for (const card of cards) {
+    while (position <= 15) {
+      const cardPositionId = document.getElementById(`cardPosition${position}`)
+      if (cardPositionId.getAttribute('data-void') === 'true') {
 
-  // Altura máxima proporcional de cada forma para que 3 SVG quepan dentro de la carta
-  const maxShapes = 3;
-  const shapeHeightPercent = 100 / maxShapes; // % de altura por cada SVG
+        const cardHTML = await renderCard(card)
+        const cardPositionId = document.getElementById(`cardPosition${position}`)
+        cardPositionId.innerHTML = cardHTML
+        cardPositionId.setAttribute('data-void', 'false')
+        cardPlaced = true
+        position++
+        cardsChanged++
+        break
+      } else {
+        position++
+        cardPlaced = false
+      }
+    }
+    if (!cardPlaced) {
+      alert("No hay más espacio para colocar cartas")
+      break
+    }
+  }
+  return cardsChanged
+}
+
+async function renderCard(card) {
+  const svgContent = await loadSVG(`.././svg/${card.shape}.svg`)
+  const dataAttributes = `data-color="${card.color}" data-fill="${card.fill}" data-number="${card.number}" data-shape="${card.shape}"`
+  let shapesHTML = ""
 
   for (let i = 0; i < card.number; i++) {
-    shapesHTML += `
-      <div class="shape" style="color:${card.color}; height:${shapeHeightPercent}%">
-        ${applyFillToSVG(svgContent, card)}
-      </div>`;
+    shapesHTML += `${applyFillToSVG(svgContent, card)}`
   }
 
+
   const html = `
-    <div class="card ${card.color}">
-      <div class="shape-container vertical">${shapesHTML}</div>
+    <div class="card" ${dataAttributes}>
+      <div class="shape">${shapesHTML}</div>
     </div>
-  `;
-  return html;
+  `
+  return html
 }
 
 // Cargar SVG desde archivo
 async function loadSVG(path) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`No se pudo cargar el SVG: ${path}`);
-  return await response.text();
+  const response = await fetch(path)
+  if (!response.ok) throw new Error(`No se pudo cargar el SVG: ${path}`)
+  return await response.text()
 }
 
 // Aplicar el relleno dinámico según la carta
 function applyFillToSVG(svgContent, card) {
-  let svg = svgContent;
+  let svg = svgContent
 
   // Color del trazo
-  svg = svg.replace(/stroke="[^"]*"/g, `stroke="${card.color}"`);
+  svg = svg.replace(/stroke="[^"]*"/g, `stroke="${card.color}"`)
 
   if (card.fill === "color") {
-    svg = svg.replace(/fill="[^"]*"/g, `fill="${card.color}"`);
+    svg = svg.replace(/fill="[^"]*"/g, `fill="${card.color}"`)
   } else if (card.fill === "none") {
-    svg = svg.replace(/fill="[^"]*"/g, `fill="none"`);
+    svg = svg.replace(/fill="[^"]*"/g, `fill="none"`)
   } else if (card.fill === "stripes") {
-    const patternId = `url(#stripes${card.color.toLowerCase()})`;
-    svg = svg.replace(/fill="[^"]*"/g, `fill="${patternId}"`);
+    const patternId = `url(#stripes${card.color.toLowerCase()})`
+    svg = svg.replace(/fill="[^"]*"/g, `fill="${patternId}"`)
   }
 
-  return svg;
+  return svg
 }
+
