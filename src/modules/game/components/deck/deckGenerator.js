@@ -1,10 +1,10 @@
-const colors = ["red", "purple", "green"];
-const fills = ["color", "none", "stripes"];
-const numbers = [1, 2, 3];
-const shapes = ["oval", "diamond", "wave"];
+const colors = ["red", "purple", "green"]
+const fills = ["color", "none", "stripes"]
+const numbers = [1, 2, 3]
+const shapes = ["oval", "diamond", "wave"]
 
 export function generateDeck() {
-    const deck = [];
+    const deck = []
 
     for (const color of colors) {
         for (const fill of fills) {
@@ -16,16 +16,16 @@ export function generateDeck() {
                         number,
                         shape,
                         id: `${color}-${fill}-${number}-${shape}`,
-                    });
+                    })
                 }
             }
         }
     }
 
-    return deck;
+    return deck
 }
 export function generateEasyDeck() {
-    const deck = [];
+    const deck = []
     for (const color of colors) {
         const fill = 'color'
         for (const number of numbers) {
@@ -36,11 +36,11 @@ export function generateEasyDeck() {
                     number,
                     shape,
                     id: `${color}-${fill}-${number}-${shape}`,
-                });
+                })
 
             }
         }
     }
 
-    return deck;
+    return deck
 }
