@@ -23,3 +23,9 @@ export function initCardSelection() {
 
     return selected;
 }
+export function unselectCards() {
+    const cardPositions = document.querySelectorAll("[id^='cardPosition']");
+    cardPositions.forEach(card => {
+        card.classList.remove("selected");
+    });
+}
