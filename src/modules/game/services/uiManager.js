@@ -9,9 +9,7 @@ const pve = urlParams.get('pve') === '1';
 let deck = (level === 1) ? generateEasyDeck() : generateDeck();;
 const penalty = setRules(level);
 
-$(document).ready(async function () {
-    let shuffledDeck = shuffleDeck(deck);
+document.addEventListener("DOMContentLoaded", async () => {
+    const shuffledDeck = shuffleDeck(deck);
     await renderDeck(shuffledDeck);
-
-
 });
