@@ -2,6 +2,7 @@ import { generateDeck, generateEasyDeck } from "../components/deck/deckGenerator
 import { shuffleDeck } from "../components/deck/shuffleDeck.js"
 import { renderInGrid } from "../components/deck/deckRenderer.js"
 import { setRules } from "./set-rules.js"
+import { initCardSelection } from "../components/deck/cardSelection.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
@@ -10,6 +11,7 @@ let deck = (level === 1) ? generateEasyDeck() : generateDeck()
 const penalty = setRules(level)
 
 document.addEventListener("DOMContentLoaded", async () => {
+    initCardSelection()
     const shuffledDeck = shuffleDeck(deck)
     const totalCards = shuffledDeck.length
     let currentCardIndex = 0

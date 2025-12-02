@@ -16,9 +16,9 @@
 
 /* Carta */
 .card {
-  background-color: white;
+
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,4 +46,17 @@
   height: calc(100%/3);
   max-height: 100%;
 
+}
+
+.selected {
+  background-color: lightgray;
+  outline: 4px solid yellow;
+  border-radius: 10px;
+}
+
+.selected:hover {
+  background-color: lightgray;
+  transform: scale(1.05);
+  outline: 4px solid yellow;
+  border-radius: 10px;
 }
