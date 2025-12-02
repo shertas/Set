@@ -1,8 +1,8 @@
-import { generateDeck, generateEasyDeck } from "../components/deck/deckGenerator.js"
-import { shuffleDeck } from "../components/deck/shuffleDeck.js"
-import { renderInGrid } from "../components/deck/deckRenderer.js"
+import { generateDeck, generateEasyDeck } from "../components/deck/deck-generator.js"
+import { shuffleDeck } from "../components/deck/shuffle-deck.js"
+import { renderInGrid } from "../components/deck/deck-renderer.js"
 import { setRules } from "./set-rules.js"
-import { initCardSelection } from "../components/deck/cardSelection.js"
+import { initCardSelection } from "../components/deck/card-selection.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
