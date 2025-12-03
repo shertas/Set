@@ -3,7 +3,7 @@
 session_start();
 
 require_once __DIR__ . '/../src/global/db/db.php';
-require_once __DIR__ . '/../src/modules/users/db/user-pdo.php';
+require_once __DIR__ . '/../src/modules/user/db/user-pdo.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\db\Db;
