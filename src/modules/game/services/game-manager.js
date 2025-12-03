@@ -5,6 +5,7 @@ import { setRules } from "./set-rules.js"
 import { initCardSelection, unselectCards } from "../components/deck/card-selection.js"
 import { initHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
+import { existsASetOnTable } from "./check-set.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
