@@ -5,7 +5,10 @@ export function initCardSelection() {
     cardPositions.forEach(card => {
         card.addEventListener("click", () => {
             const id = card.id;
-
+            // Si la carta está vacía → no hacer nada
+            if (card.dataset.void === "true") {
+                return;
+            }
             // Si ya está seleccionada → deseleccionar
             if (selected.has(id)) {
                 selected.delete(id);

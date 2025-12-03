@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             let isSet = isASet(selectedIds)
             unselectCards()
+            selectedCards.clear()
         }
     })
 })
