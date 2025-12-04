@@ -106,7 +106,7 @@ body {
 }
 
 /* ----------------------------------------
-   MENU USUARIO (ESTILO TAILADMIN)
+    MENU USUARIO 
 ---------------------------------------- */
 .user-menu {
     position: absolute;
@@ -128,7 +128,9 @@ body {
     font-size: 1rem;
 }
 
-/* Dropdown */
+/*------------------------------------
+    Dropdown 
+-------------------------------------*/
 .user-dropdown {
     position: absolute;
     right: 0;
@@ -161,7 +163,7 @@ body {
 }
 
 /* ----------------------------------------
-   CONTENIDO GENERAL
+    CONTENIDO GENERAL
 ---------------------------------------- */
 .main-content {
     padding-top: 130px;
@@ -188,7 +190,7 @@ body {
 }
 
 /* ----------------------------------------
-   TITULOS
+    TITULOS
 ---------------------------------------- */
 .titulo {
     font-size: 2rem;
@@ -210,9 +212,9 @@ body {
 }
 
 /* ----------------------------------------
-   CARDS
+    CARDS
 ---------------------------------------- */
-.card {
+.cards {
     background: var(--color-bg-card);
     padding: 25px;
     border-radius: var(--radius);
