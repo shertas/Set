@@ -369,6 +369,7 @@
     text-align: center;
     margin-bottom: 15px;
     color: var(--color-text);
+    margin-bottom: 10px;
 }
 
 .titulo-bienvenida {
@@ -472,6 +473,19 @@ form input, form select {
 
 form input:focus {
     border-color: var(--color-primary);
+}
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Descripciones */
+.config-desc, .config-details {
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
 /* ----------------------------------------
@@ -584,6 +598,57 @@ form input:focus {
     margin-bottom: 20px;
     box-shadow: var(--shadow);
     text-align: center;
+}
+
+/*------------------------------------
+    SELECT estilizado 
+-----------------------------------------*/
+.select-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-input-bg);
+    color: var(--color-text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border 0.2s, background 0.2s;
+}
+
+.select-input:hover {
+    background: var(--row-hover);
+}
+
+.select-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+/* Checkbox + label */
+.form-group-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary); /* compatible Chrome / Edge / Firefox modernos */
+}
+
+.label-check {
+    color: var(--color-text);
+    font-size: 0.95rem;
+
+}
+
+/* Botón ancho */
+.btn-wide {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.05rem;
+    margin-top: 10px;
 }
 
 /*------------------------------------------------
