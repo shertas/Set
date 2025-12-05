@@ -373,7 +373,7 @@
 }
 
 .titulo-bienvenida {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .texto-justificado {
@@ -422,7 +422,7 @@
 }
 
 /* ----------------------------------------
-   BOTONES
+    BOTONES
 ---------------------------------------- */
 .btn-primary {
     background: var(--color-primary);
@@ -575,11 +575,9 @@ form input:focus {
     box-shadow: var(--shadow);
     width: 360px;
     text-align: center;
-
 }
 
 .wrapper {
-
     display: flex;
     justify-content: center;
     align-items: center;
