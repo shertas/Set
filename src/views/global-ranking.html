@@ -5,29 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROYECTO SET</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../global/styles/styles.css">
 </head>
 
-<body>
-    <header>
-        <h1>PROYECTO SET</h1>
-        <nav>
-            <ul class="menu">
-                <li><a href="/src/modules/login/views/welcome.html">Bienvenida</a></li>
-                <li><a href="/src/modules/game/services/new-game.php">Nuevo juego</a></li>
-                <li><a href="/src/modules/game-config/views/game-config.html">Configuración de partida</a></li>
-                <li><a href="user-ranking.html">Histórico de partidas</a></li>
-                <li><a href="global-ranking.html">Ranking global</a></li>
-                <li><a href="config-user.html">Configuración de usuario</a></li>
-                <li class="cerrar-sesion"><a href="/src/modules/login/views/login.html">Cerrar Sesión</a></li>
-            </ul>
-        </nav>
+<body class="body-main">
+
+    <header class="topbar">
+
+    <!--Menú principal-->
+    <nav>
+        <ul class="menu">
+            <li ><a href="../../src/modules/login/views/welcome.html">Bienvenida</a></li>
+            <li><a href="../../src/modules/game/services/new-game.php">Nuevo juego</a></li>
+            <li><a href="../../src/modules/game-config/views/game-config.html">Configuración de partida</a></li>
+            <li><a href="../../src/views/user-ranking.html">Histórico de partidas</a></li>
+            <li><a href="../../src/views/global-ranking.html">Ranking global</a></li>
+        </ul>
+    </nav>
+
+    <!-- Menú de usuario -->
+    <div class="user-menu">
+        <div class="user-avatar" id="avatar">U</div>
+
+        <div class="user-dropdown" id="userDropdown">
+            <a href="../../src/modules/user/views/config-user.html">Configuración</a>
+            <a href="../../src/modules/login/views/login.html">Cerrar sesión</a>
+        </div>
+    </div>
+
     </header>
 
-    <main class="cuerpo">
-        <!-- Contenido principal de la página -->
-        <h1 class="titulo">Ranking global</h1>
-        <table class="tabla-partidas">
+    <h1 class="titulo">Ranking global</h1>
+
+    <!-- Contenido principal de la página -->
+
+    <div class="table-wrapper">
+
+        <table class="table">
             <thead>
                 <tr>
                     <th>Posición</th>
@@ -41,26 +55,37 @@
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Primero</td>
+                    <td>Pepe</td>
+                    <td>05/12/2025</td>
+                    <td>02:50</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>10</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Segundo</td>
+                    <td>Merche</td>
+                    <td>24/11/2025</td>
+                    <td>05:30</td>
+                    <td>8</td>
+                    <td>4</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Tercero</td>
+                    <td>Juani</td>
+                    <td>01/12/2025</td>
+                    <td>09:00</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
                 </tr>
             </tbody>
         </table>
-    </main>
-</body>
+    </div>
 
+    <script src="../global/services/user-menu.js"></script>
+
+</body>
 </html>
