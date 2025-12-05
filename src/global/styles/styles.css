@@ -340,9 +340,6 @@ form input:focus {
     background: #1f1f1f;
 }
 
-/* ----------------------------------------
-   LOGIN PAGE
----------------------------------------- */
 .auth-header {
     text-align: center;
     padding: 25px 0;
@@ -351,14 +348,46 @@ form input:focus {
     color: var(--color-text);
 }
 
-.login-wrapper {
+.container{
+    background-color: var(--color-bg-card);
+    padding: 36px 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 360px;
+    text-align: center;
+
+}
+.wrapper {
+
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 0px); /* ocupa la pantalla completa */
-    padding: 30px; /* evita que toque bordes en pantallas pequeñas */
-    box-sizing: border-box;
+    height: 100vh;
+    /*
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 0px); /* ocupa la pantalla completa 
+    padding: 30px; /* evita que toque bordes en pantallas pequeñas 
+    box-sizing: border-box;*/
 }
+
+.cronometro {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    background: #1f1f1f;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+/*------------------------------------------------
+    Login page
+--------------------------------------------------*/
 
 .login-container {
     background-color: var(--color-bg-card);

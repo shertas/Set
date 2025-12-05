@@ -33,7 +33,7 @@
         <div class="user-avatar" id="avatar">U</div>
 
         <div class="user-dropdown" id="userDropdown">
-            <a href="../../../views/config-user.html">Configuración</a>
+            <a href="../../../modules/user/views/config-user.html">Configuración</a>
             <a href="../../login/views/login.html">Cerrar sesión</a>
         </div>
     </div>
@@ -59,7 +59,9 @@
     <main class="body-game">
         <!-- Contenido principal de la página -->
         <div class="game-layout">
+
             <div id="marcador">
+                <div id="cronometro" class="cronometro">00:00</div>
                 <p id="k1">Cartas restantes: <span id="v1"></span></p> 
                 <p id="k2">Errores: <span id="v2"></span></p>
                 <p id="k3">Puntuación: <span id="v3"></span></p>
@@ -89,6 +91,26 @@
             </div>
         </div> 
     </main>
+
+    <script type="module">
+
+        import { iniciarCronometro, detenerCronometro, obtenerTiempoFinal } from "../services/reloj.js";
+
+        // Iniciar al cargar la página
+        iniciarCronometro();
+
+        // EJEMPLO — al finalizar el juego:
+        function finalizarPartida() {
+            detenerCronometro();
+
+            const tiempo = obtenerTiempoFinal();
+            console.log("Tiempo final:", tiempo);
+
+            // Aquí puedes enviarlo al backend si quieres
+        }
+    </script>
+
+
 </body>
 
 </html>
