@@ -1,19 +1,59 @@
 /* ----------------------------------------
     VARIABLES GLOBALES ORIGINALES PALETA INICIAL
----------------------------------------- 
+---------------------------------------- */
 :root {
     --color-bg: #0f0f0f;
     --color-bg-card: #1a1a1a;
     --color-bg-card-sub: #303030;
-    --color-bg-game: #FFFFFF;
-    --color-bg-surface-light: #2a2a2a;
-    --color-primary: #4f46e5;
-    --color-primary-hover: #4338ca;
+    --color-bg-game: #ffffff;
+
+    /* superficies y filas */
+    --color-bg-surface: #1f1f1f;
+    --color-bg-surface-light: #2a2a2a; 
+
+    /* filas alternativas más específicas */
+    --row-dark-1: #232323;
+    --row-dark-2: #2a2a2a;
+    --row-hover: #333333;
+
+    /* paleta principal (azul/por defecto) */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-primary-light: #3b82f6;
+
+    /* invitado / botones secundarios */
+    --color-invitado-bg: #2b2b2b;
+    --color-invitado-bg-hover: #3a3a3a;
+
+    /* user dropdown & small panels */
+    --color-panel: #222222;
+    --color-input-bg: #111111;
+    --color-border: #333333;
+
+    /* textos */
     --color-text: #f5f5f5;
     --color-text-muted: #b3b3b3;
+
+    /* alerts */
+    --color-alert-bg: rgba(255,75,75,0.09);
+    --color-alert-border: #ff4b4b;
+    --color-alert-text: #ff7a7a;
+
     --radius: 10px;
     --shadow: 0 8px 25px rgba(0,0,0,0.25);
-}*/
+
+    /* variables RGB para transparencias reusables */
+    --rgb-white: 255,255,255;   /* usar: rgba(var(--rgb-white), 0.02) */
+     --rgb-black: 0,0,0;        /* usar: rgba(var(--rgb-black), 0.5) */
+
+    /* overlays/hover semánticos (valores alpha por defecto) */
+    --overlay-light: rgba(var(--rgb-white), 0.02); /* hover sutil en dark */
+    --overlay-medium: rgba(var(--rgb-white), 0.06);
+    --overlay-dark: rgba(var(--rgb-black), 0.18);
+
+    /* colores semánticos extra */
+    --on-primary: #ffffff;   /* color del texto encima del primary */
+}
 
 /*PALETA 2 */
 
@@ -41,37 +81,96 @@
 
     --radius: 10px;
     --shadow: 0 8px 25px rgba(0,0,0,0.25);
-}*/
+}
 
-/* Paleta 3*/
+/* Paleta 
 
 /* ----------------------------------------
     VARIABLES GLOBALES — PALETA ESMERALDA
----------------------------------------- */
+---------------------------------------- 
 :root {
     --color-bg: #0f0f0f;
     --color-bg-card: #1a1a1a;
     --color-bg-card-sub: #303030;
     --color-bg-game: #FFFFFF;
 
-    /* Faltaba esta variable, la defino */
+    /* Faltaba esta variable, la defino 
     --color-surface: #16201d;
 
-    /* Superficies para tablas */
+    /* Superficies para tablas 
     --color-bg-surface: #16201d;
     --color-bg-surface-light: #1c2a26;
 
-    /* Paleta Verde Esmeralda */
-    --color-primary: #10b981;          /* Verde principal */
-    --color-primary-hover: #059669;    /* Hover verde */
-    --color-primary-light: #34d399;    /* Verde suave */
+    /* Paleta Verde Esmeralda 
+    --color-primary: #10b981;          /* Verde principal 
+    --color-primary-hover: #059669;    /* Hover verde 
+    --color-primary-light: #34d399;    /* Verde suave 
 
-    /* Texto */
+    /* Texto 
     --color-text: #f5f5f5;
     --color-text-muted: #b3b3b3;
 
     --radius: 10px;
     --shadow: 0 8px 25px rgba(0,0,0,0.25);
+}*/
+
+/*----------------------------------
+    Modo light 
+-----------------------------------*/
+.light-mode {
+
+    /* fondos principales */
+    --color-bg: #f5f7fa;                 /* fondo general */
+    --color-bg-card: #ffffff;            /* tarjetas */
+    --color-bg-card-sub: #f0f2f5;        /* subpaneles */
+    --color-bg-game: #ffffff;
+
+    /* superficies */
+    --color-bg-surface: #ffffff;         /* filas normales */
+    --color-bg-surface-light: #f2f4f7;   /* hover/light rows */
+
+    /* filas alternativas */
+    --row-dark-1: #f4f4f4;
+    --row-dark-2: #ededed;
+    --row-hover: #e6e9ee;
+
+    /* primarios (azules ajustados para light) */
+    --color-primary: #1d4ed8;            /* azul más oscuro para contrastar en light */
+    --color-primary-hover: #1e40af;
+    --color-primary-light: #3b82f6;
+
+    /* botones secundarios / invitado */
+    --color-invitado-bg: #e2e8f0;         /* gris azulado claro */
+    --color-invitado-bg-hover: #cbd5e1;   /* hover */
+
+    /* paneles, dropdown, inputs */
+    --color-panel: #ffffff;               /* dropdown y paneles */
+    --color-input-bg: #ffffff;            /* inputs */
+    --color-border: #d1d5db;              /* gris suave */
+
+    /* textos */
+    --color-text: #1f2937;                /* gris muy oscuro */
+    --color-text-muted: #6b7280;          /* muted */
+
+    /* alerts */
+    --color-alert-bg: rgba(240,30,30,0.10);
+    --color-alert-border: #ef4444;
+    --color-alert-text: #b91c1c;
+
+    --radius: 10px;
+    --shadow: 0 4px 18px rgba(0,0,0,0.12);
+
+    /* transparencias reusables */
+    --rgb-white: 255,255,255;
+    --rgb-black: 0,0,0;
+
+    /* overlays adaptados al tema claro */
+    --overlay-light: rgba(var(--rgb-black), 0.03); 
+    --overlay-medium: rgba(var(--rgb-black), 0.06);
+    --overlay-dark: rgba(var(--rgb-black), 0.12);
+
+    /* texto encima del primary */
+    --on-primary: #ffffff;
 }
 
 
@@ -126,7 +225,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #1a1a1a;
+    background: var(--color-bg-card);
     padding: 15px 30px;
     display: flex;
     justify-content: center;
@@ -166,16 +265,16 @@
 }
 
 .menu a:hover {
-    background: #333;
+    background: var(--color-menu-hover);   
     color: var(--color-primary);
 }
 
 .menu .logout a {
-    color: #ff6b6b;
+    color: var(--color-menu-logout);
 }
 
 .menu .logout a:hover {
-    color: #ff3838;
+    color: var(--color-menu-logout-hover);
 }
 
 /* ----------------------------------------
@@ -196,7 +295,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--on-primary);
     cursor: pointer;
     font-size: 1rem;
 }
@@ -208,7 +307,7 @@
     position: absolute;
     right: 0;
     top: 55px;
-    background: #222;
+    background: var(--color-panel);
     padding: 10px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -227,7 +326,7 @@
 }
 
 .user-dropdown a:hover {
-    background: #333;
+    background: var(--overlay-medium);
 }
 
 /* Show dropdown */
@@ -273,7 +372,7 @@
 }
 
 .titulo-bienvenida {
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .texto-justificado {
@@ -308,7 +407,7 @@
 }
 
 .card-sub h3{
-    color:#f5f5f5;
+    color: var(--color-text);
     margin-bottom: 20px;
 }
 
@@ -329,7 +428,7 @@
     padding: 12px 20px;
     border: none;
     border-radius: var(--radius);
-    color: white;
+    color: var(--on-primary);
     cursor: pointer;
     transition: 0.2s;
     font-size: 1rem;
@@ -340,20 +439,20 @@
 }
 
 .btn-secondary {
-    background: #333;
+    background: var(--color-invitado-bg);
     padding: 12px;
     border-radius: var(--radius);
-    color: white;
+    color: var(--color-text);
     border: none;
     cursor: pointer;
 }
 
 .btn-secondary:hover {
-    background: #444;
+    background: var(--color-invitado-bg-hover);
 }
 
 /* ----------------------------------------
-   FORMULARIOS
+    FORMULARIOS
 ---------------------------------------- */
 form label {
     margin-bottom: 6px;
@@ -366,9 +465,9 @@ form input, form select {
     padding: 12px;
     margin-bottom: 20px;
     border-radius: var(--radius);
-    border: 1px solid #333;
-    background: #111;
-    color: white;
+    border: 1px solid var(--color-menu-hover);
+    background: var(--color-input-bg);
+    color: var(--color-text);
 }
 
 form input:focus {
@@ -390,10 +489,11 @@ form input:focus {
 }
 
 .table thead th{
-    background: var(--color-primary-hover);
+    background: var(--color-primary);
     padding: 15px;
     text-align: center;
     font-weight: bold;
+    color: var(--on-primary);
 }
 .table tbody tr{
     background: var(--color-bg-surface);
@@ -405,6 +505,7 @@ form input:focus {
     padding: 12px;
     text-align: center;
     border: none;
+    color: var(--color-text);
 }
 
 /* Redondear esquinas de cada fila */
@@ -424,7 +525,7 @@ form input:focus {
 
 .table-wrapper{
     max-width: 1200px;
-    margin: 40px auto 0px auto; /* baja la tabla y la centra */
+    margin: 90px auto 0px auto; /* baja la tabla y la centra */
     padding: 25px;
     background: var(--color-bg-card);
     border-radius: var(--radius);
@@ -523,16 +624,16 @@ form input:focus {
     margin-top: 12px;
     width: 100%;
     padding: 12px;
-    background: #333;
+    background: var(--color-invitado-bg);
     text-align: center;
     border-radius: var(--radius);
     text-decoration: none;
-    color: white;
+    color: var(--color-text);
     transition: background 0.2s;
 }
 
 .invitado-link:hover {
-    background: #444;
+    background: var(--color-invitado-bg-hover);
 }
 
 
@@ -540,14 +641,14 @@ form input:focus {
     display: inline-block;
     padding: 10px 14px;
     border-radius: 8px;
-    background: #2b2b2b;
+    background: var(--color-invitado-bg);
     color: var(--color-text);
     text-decoration: none;
     transition: background 0.15s;
 }
 
 .invitado-btn a:hover {
-    background: #3a3a3a;
+    background: var(--color-invitado--bg-hover);
 }
 
 .login-container button[type="submit"] {
@@ -556,7 +657,7 @@ form input:focus {
     border-radius: var(--radius);
     border: none;
     background-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-bg-game);
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.15s, transform 0.12s;
@@ -568,12 +669,12 @@ form input:focus {
 }
 
 .error-message {
-    background-color: #ff4b4b18;
-    border: 1px solid #ff4b4b;
+    background: var(--color-alert-bg);
+    border: 1px solid var(--color-alert-border);
     padding: 10px;
     border-radius: var(--radius);
     margin-bottom: 15px;
-    color: #ff7a7a;
+    color: var(--color-alert-text);
 }
 
 @media (max-width: 400px) {
