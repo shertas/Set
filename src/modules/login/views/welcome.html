@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="../../../global/styles/styles.css">
 </head>
 
-<body>
-  <header class="topbar">
-  <!--  <h1 class="logo">PROYECTO SET</h1>-->   
+<body class="body-main">
+  <header class="topbar"> 
 
+    <!--Menú principal-->
     <nav>
       <ul class="menu">
         <li ><a href="welcome.html">Bienvenida</a></li>
@@ -22,12 +22,17 @@
       </ul>
     </nav>
 
+    <!--Selector de tema-->
+    <button id="toggleTheme" class="btn-secondary" style="margin-left:20px;">
+      Cambiar tema
+    </button>
+
     <!-- Menú de usuario -->
     <div class="user-menu">
       <div class="user-avatar" id="avatar">U</div>
 
       <div class="user-dropdown" id="userDropdown">
-        <a href="../../../views/config-user.html">Configuración</a>
+        <a href="../../../modules/user/views/config-user.html">Configuración</a>
         <a href="login.html">Cerrar sesión</a>
       </div>
     </div>
@@ -87,7 +92,7 @@
   </main>
 
   <script src="../../../global/services/user-menu.js"></script>
+  <script src="../../../global/services/theme.js"></script>
 
 </body>
-
 </html>

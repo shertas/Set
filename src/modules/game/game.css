@@ -1,4 +1,38 @@
-/* Grid de cartas */
+/* 2-column layout */
+.game-layout{
+  display: grid;
+  grid-template-columns: 200px 1fr; /* marcador ancho fijo, resto para grid */
+  gap: 20px;
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  align-items: stretch; /* clave: hace que la columna izquierda tenga la misma altura */
+}
+
+/* LEFT column: marcador */
+#marcador{
+  display: grid;
+  place-items: center; /* centra texto pt/bot y hor */
+  padding: 20px;
+  background: #b3b3b3;
+  border-radius: var(--radius);
+  height: 50%;
+  text-align: center;  /* centrado del texto */
+}
+
+/* RIGHT column: grid + buttons */
+.game-right{
+  display: grid;
+  grid-template-rows: 1fr auto; /* 1fr -> cards ocupo todo, auto -> botones abajo */
+
+}
+
+/* Asegurar que botones estén al final */
+#buttons {
+  align-self: end;
+  justify-self: center;
+}
+
+/* Grid de cartas*/ 
 #cardsGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -9,9 +43,8 @@
   width: 70vw;
   height: 80vh;
   flex-grow: 1;
-  /* ocupa todo el espacio disponible del body */
+  /* ocupa todo el espacio disponible del body*/
   box-sizing: border-box;
-
 }
 
 /* Carta */
@@ -60,3 +93,31 @@
   outline: 4px solid yellow;
   border-radius: 10px;
 }
+
+/*
+/* Responsivo: apilar en pantallas pequeñas - mirarlo sigue fallando 
+@media (max-width: 800px){
+  
+  .menu{
+    grid-column: col-start / span 2;
+    grid-row: 1/5;
+  }
+
+  .user-menu{
+    grid-column: col-start 3 / span 1;
+  }
+
+  .cardsGrid{
+    grid-column: col-start 5 / span 2;
+    grid-row: 2/4;
+  }
+
+  #marcador{
+    grid-column: col-start 8 / span 1;
+    grid-row: 2/4;
+  }
+
+  #buttons{
+    grid-column: col-start / span 10;
+  }
+}*/
