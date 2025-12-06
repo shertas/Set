@@ -1,7 +1,35 @@
 <?php
 
+session_start();
+
+require_once __DIR__ . '/../src/global/db/db.php';
 require_once __DIR__ . '/../src/modules/user/db/user-pdo.php';
-$pdo = require_once __DIR__ . '/../src/global/db/init.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\db\Db;
+use Dotenv\Dotenv;
+
+// Ruta a la raíz del proyecto
+$rootPath = dirname(__DIR__, 1);
+
+$dotenv = Dotenv::createImmutable($rootPath);
+$dotenv->load();
+
+// Crear la conexión usando la clase BD
+try {
+    $pdo = Db::getConexion(
+        $_ENV['DB_HOST'],
+        $_ENV['DB_PORT'],
+        $_ENV['DB_NAME'],
+        $_ENV['DB_USER'],
+        $_ENV['DB_PASS']
+    );
+} catch (PDOException $e) {
+    echo "❌ Error de conexión: " . $e->getMessage() . "<br>";
+    die;
+}
+
+
 
 $userBD = new UserPDO($pdo);
 
