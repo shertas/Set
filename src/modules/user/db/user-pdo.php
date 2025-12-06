@@ -11,14 +11,15 @@ class UserPDO
         $this->db = $db;
     }
 
-    public function userVerify(string $user, string $pass): bool
+    public function userVerify(string $user, string $pass)
     {
         $consulta = "SELECT * FROM user WHERE name = :usuario AND pass = :pass";
         $stmt = $this->db->prepare($consulta);
         $stmt->bindParam(':usuario', $user);
         $stmt->bindParam(':pass', $pass);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result !== false ? $result : false;
     }
 
     public function userCreate(string $user, string $pass): bool
@@ -40,11 +41,15 @@ class UserPDO
 
     public function userModify(User $user): bool
     {
-        $consulta = "UPDATE user SET name = :user, pass = :pass WHERE id = :id";
+        $nombre = $user->getNombre();
+        $clave = $user->getClave();
+        $id = $user->getId();
+        
+        $consulta = "UPDATE user SET name = :user, pass = :pass WHERE id_user = :id";
         $stmt = $this->db->prepare($consulta);
-        $stmt->bindParam(':user', $user->getNombre());
-        $stmt->bindParam(':pass', $user->getClave());
-        $stmt->bindParam(':id', $user->getId());
+        $stmt->bindParam(':user', $nombre);
+        $stmt->bindParam(':pass', $clave);
+        $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
 }
