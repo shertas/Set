@@ -11,15 +11,14 @@ class UserPDO
         $this->db = $db;
     }
 
-    public function userVerify(string $user, string $pass)
+    public function userVerify(string $user, string $pass): bool
     {
         $consulta = "SELECT * FROM user WHERE name = :usuario AND pass = :pass";
         $stmt = $this->db->prepare($consulta);
         $stmt->bindParam(':usuario', $user);
         $stmt->bindParam(':pass', $pass);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result !== false ? $result : false;
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
     }
 
     public function userCreate(string $user, string $pass): bool

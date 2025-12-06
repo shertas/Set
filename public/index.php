@@ -41,8 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pass    = $_POST['password'] ?? null;
 
     //Comprobamos las credenciales
-    $user = $userBD->userVerify($nombre, $pass);
-    if (isset($nombre) && isset($pass) && $user !== false) {
+    if (isset($nombre) && isset($pass) && $userBD->userVerify($nombre, $pass)) {
 
         // Login correcto, guardamos en sesión
         $_SESSION['usuario'] = $nombre;
@@ -63,8 +62,7 @@ if (isset($_SESSION['usuario'])) {
     $nombre = $_SESSION['usuario'];
     $pass = $_SESSION['pass'];
     // Verificar que el usuario sigue existiendo en la base de datos
-    $user = $userBD->userVerify($nombre, $pass);
-    if ($user !== false) {
+    if ($userBD->userVerify($nombre, $pass)) {
         header("Location: ../src/modules/login/views/welcome.html");
         exit;
     } else {
