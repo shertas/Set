@@ -6,6 +6,7 @@ import { initCardSelection, unselectCards } from "../components/deck/card-select
 import { initHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
 import { existsASetOnTable } from "./check-set.js"
+import { Scoreboard } from "./scoreboard.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
@@ -26,10 +27,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     currentCardIndex += addCards
     setFound = existsASetOnTable()
 
+    // Inicializar el marcador
+    const scoreboard = new Scoreboard(totalCards)
+    scoreboard.updateCardsRemaining(12) // Se han usado 12 cartas iniciales
+
     // Event Listeners
     add3CardsButton.addEventListener("click", async () => {
         addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
         currentCardIndex += addCards
+        scoreboard.updateCardsRemaining(addCards) // Actualizar cartas usadas
         setFound = existsASetOnTable()
     })
     isSetButton.addEventListener("click", async () => {
@@ -41,10 +47,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             unselectCards()
             selectedCards.clear()
             if (isSet) {
+                // Es un SET correcto - sumar 1 punto
+                scoreboard.addSet(1)
                 addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
                 currentCardIndex += addCards
+                scoreboard.updateCardsRemaining(addCards) // Actualizar cartas usadas
                 setFound = existsASetOnTable()
                 return true
+            } else {
+                // No es un SET - contabilizar error y aplicar penalización según nivel
+                scoreboard.addError()
+                if (penalty > 0) {
+                    scoreboard.applyPenalty(penalty)
+                }
             }
 
         }
