@@ -34,7 +34,7 @@
 
             <div class="user-dropdown" id="userDropdown">
                 <a href="../../../modules/user-config/views/config-user.html">Configuración</a>
-                <a href="login.html">Cerrar sesión</a>
+                <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
 
     <!-- Contenido principal de la página -->
     <main class="main-content">
-        
+
         <div class="cards">
 
             <h2 class="titulo">Configuración de la Partida</h2>
@@ -58,23 +58,22 @@
                 </select>
 
                 <p id="details" class="config-details">
-                    <b>Nivel Medio</b>: buena opción para quienes ya conocen el juego. <br> 
+                    <b>Nivel Medio</b>: buena opción para quienes ya conocen el juego. <br>
                     Sin contrarreloj. Se permite añadir 3 cartas a la mesa y habrá una penalización de 0,5 por fallo.
                 </p>
+
+                <div class="form-group-check">
+                    <input type="checkbox" id="pve" name="pve" class="check-input">
+                    <label for="pve" class="label-check"> ¿Jugar contra la máquina?</label>
+                </div>
+
+                <button type="submit" class="btn-primary btn-wide" id="start" name="start">
+                    Empezar partida
+                </button>
 
             </form>
 
         </div>
-        
-        <div class="form-group-check">
-            <input type="checkbox" id="pve" name="pve" class="check-input">
-            <label for="pve" class="label-check"> ¿Jugar contra la máquina?</label>
-        </div>
-        
-        <button type="submit" class="btn-primary btn-wide" id="start" name="start">
-            Empezar partida
-        </button>
-        </form>
     </main>
 
     <script src="../../../global/services/user-menu.js"></script>
