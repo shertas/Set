@@ -7,6 +7,8 @@ import { initHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
 import { existsASetOnTable } from "./check-set.js"
 import { Scoreboard } from "./scoreboard.js"
+import { timerStart } from "./stopwatch.js"
+import { checkGameEnd, endGame } from "./end-game.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
@@ -15,14 +17,17 @@ let deck = (level === 1) ? generateEasyDeck() : generateDeck()
 const penalty = setRules(level)
 
 document.addEventListener("DOMContentLoaded", async () => {
+    timerStart()
     const add3CardsButton = document.getElementById("add3")
     const isSetButton = document.getElementById("isSet")
+    const endGameButton = document.getElementById("endGame")
     const selectedCards = initCardSelection()
     const shuffledDeck = shuffleDeck(deck)
     const totalCards = shuffledDeck.length
     console.log(totalCards)
     let currentCardIndex = 0
     let setFound = false
+    let gameEnded = false
     let addCards = await renderInGrid(shuffledDeck, currentCardIndex, 12)
     currentCardIndex += addCards
     setFound = existsASetOnTable()
@@ -42,6 +47,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         currentCardIndex += addCards
         scoreboard.updateCardsRemaining(addCards) // Actualizar cartas usadas
         setFound = existsASetOnTable()
+        gameEnded = checkGameEnd(currentCardIndex, totalCards, setFound)
+        if (gameEnded) {
+            saveGame(scoreboard, pve)
+        }
     })
     isSetButton.addEventListener("click", async () => {
         const selectedIds = Array.from(selectedCards)
@@ -63,6 +72,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                     currentCardIndex += addCards
                     setFound = existsASetOnTable()
                 }
+                gameEnded = checkGameEnd(currentCardIndex, totalCards, setFound)
+                if (gameEnded) {
+                    saveGame(scoreboard, pve, level)
+                }
+
+
                 return true
             } else {
                 // No es un SET - contabilizar error y aplicar penalización según nivel
@@ -73,6 +88,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
         }
+    })
+    endGameButton.addEventListener("click", () => {
+        gameEnded = endGame()
     })
     // Conditional Help Button Initialization
     if (level === 1) {
