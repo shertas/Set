@@ -26,6 +26,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     let addCards = await renderInGrid(shuffledDeck, currentCardIndex, 12)
     currentCardIndex += addCards
     setFound = existsASetOnTable()
+    if (!setFound && currentCardIndex < totalCards) {
+        addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
+        currentCardIndex += addCards
+        setFound = existsASetOnTable()
+    }
 
     // Inicializar el marcador
     const scoreboard = new Scoreboard(totalCards)
@@ -53,6 +58,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 currentCardIndex += addCards
                 scoreboard.updateCardsRemaining(addCards) // Actualizar cartas usadas
                 setFound = existsASetOnTable()
+                if (!setFound && currentCardIndex < totalCards) {
+                    addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
+                    currentCardIndex += addCards
+                    setFound = existsASetOnTable()
+                }
                 return true
             } else {
                 // No es un SET - contabilizar error y aplicar penalización según nivel
