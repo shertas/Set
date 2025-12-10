@@ -66,7 +66,7 @@
         <div class="game-layout">
 
             <div id="marcador">
-                <div id="cronometro" class="cronometro">00:00</div>
+                <div id="timer" class="timer">00:00</div>
                 <p id="cardsLeft">Cartas restantes: <span id="cardsLeftCount"></span></p>
                 <p id="errors">Errores: <span id="errorsCount"></span></p>
                 <p id="score">Puntuación: <span id="scoreCount"></span></p>
@@ -98,24 +98,6 @@
     </main>
 
     <script src="../../../global/services/theme.js"></script>
-    <script type="module">
-
-        import { iniciarCronometro, detenerCronometro, obtenerTiempoFinal } from "../services/reloj.js";
-
-        // Iniciar al cargar la página
-        iniciarCronometro();
-
-        // EJEMPLO — al finalizar el juego:
-        function finalizarPartida() {
-            detenerCronometro();
-
-            const tiempo = obtenerTiempoFinal();
-            console.log("Tiempo final:", tiempo);
-
-            // Aquí puedes enviarlo al backend si quieres
-        }
-    </script>
-
 
 </body>
 
