@@ -9,6 +9,7 @@ import { existsASetOnTable } from "./check-set.js"
 import { Scoreboard } from "./scoreboard.js"
 import { timerStart, countdown } from "./stopwatch.js"
 import { checkGameEnd, endGame } from "./end-game.js"
+import { saveScore } from "./save-score.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
@@ -42,16 +43,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     scoreboard.updateCardsRemaining(12) // Se han usado 12 cartas iniciales
 
     // Event Listeners
-    add3CardsButton.addEventListener("click", async () => {
-        addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
-        currentCardIndex += addCards
-        scoreboard.updateCardsRemaining(addCards) // Actualizar cartas usadas
-        setFound = existsASetOnTable()
-        gameEnded = checkGameEnd(currentCardIndex, totalCards, setFound)
-        if (gameEnded) {
-            saveGame(scoreboard, pve)
-        }
-    })
+    if (level !== 3) {
+        add3CardsButton.addEventListener("click", async () => {
+            addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
+            currentCardIndex += addCards
+            scoreboard.updateCardsRemaining(addCards) // Actualizar cartas usadas
+            setFound = existsASetOnTable()
+            gameEnded = checkGameEnd(currentCardIndex, totalCards, setFound)
+            if (gameEnded) {
+                saveScore(scoreboard, pve)
+            }
+        })
+    }
     isSetButton.addEventListener("click", async () => {
         const selectedIds = Array.from(selectedCards)
         if (selectedIds.length !== 3) {
@@ -74,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
                 gameEnded = checkGameEnd(currentCardIndex, totalCards, setFound)
                 if (gameEnded) {
-                    saveGame(scoreboard, pve, level)
+                    saveScore(scoreboard, pve, level)
                 }
 
 
@@ -91,7 +94,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     endGameButton.addEventListener("click", () => {
         gameEnded = endGame()
+        saveScore(scoreboard, pve, level)
     })
+
+    document.addEventListener("timerFinished", () => {
+        saveScore(scoreboard, pve, level)
+    })
+
     // Conditional Help Button Initialization
     if (level === 1) {
         const helpButton = document.getElementById("help")
