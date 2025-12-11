@@ -8,6 +8,6 @@ export function saveGame(scoreboard, pve, level) {
         level: level,
         date: new Date().toISOString()
     }
-    console.log("Game Over! Saving game state:", gameState)
+    console.log("Saving game state:", gameState)
     //HACER LLAMADA A BASE DE DATOS AQUI Y BORRAR EL CONSOLE.LOG
 }
