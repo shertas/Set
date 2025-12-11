@@ -2,27 +2,49 @@
 //  CRONÓMETRO CONTROL
 // ------------------------------
 
-let segundos = 0;
-let minutos = 0;
-let relojInterval = null;
+import { endGame } from "/src/modules/game/services/end-game.js"
+
+let seconds = 0
+let minutes = 0
+let timeInterval = null
 
 export function timerStart() {
-    relojInterval = setInterval(() => {
-        segundos++;
+    timeInterval = setInterval(() => {
+        seconds++
 
-        if (segundos === 60) {
-            segundos = 0;
-            minutos++;
+        if (seconds === 60) {
+            seconds = 0
+            minutes++
         }
 
-        const txtMin = minutos.toString().padStart(2, "0");
-        const txtSeg = segundos.toString().padStart(2, "0");
+        const txtMin = minutes.toString().padStart(2, "0")
+        const txtSeg = seconds.toString().padStart(2, "0")
 
-        document.getElementById("timer").textContent = `${txtMin}:${txtSeg}`;
+        document.getElementById("timer").textContent = `${txtMin}:${txtSeg}`
 
-    }, 1000);
+    }, 1000)
+}
+export function countdown() {
+    minutes = 30
+    timeInterval = setInterval(() => {
+        seconds--
+
+        if (seconds < 0) {
+            seconds = 59
+            minutes--
+        }
+
+        const txtMin = minutes.toString().padStart(2, "0")
+        const txtSeg = seconds.toString().padStart(2, "0")
+
+        document.getElementById("timer").textContent = `${txtMin}:${txtSeg}`
+
+        if (minutes < 0) {
+            endGame()
+        }
+    }, 1000)
 }
 
 export function timerStop() {
-    clearInterval(relojInterval);
+    clearInterval(timeInterval)
 }

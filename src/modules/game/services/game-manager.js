@@ -7,7 +7,7 @@ import { initHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
 import { existsASetOnTable } from "./check-set.js"
 import { Scoreboard } from "./scoreboard.js"
-import { timerStart } from "./stopwatch.js"
+import { timerStart, countdown } from "./stopwatch.js"
 import { checkGameEnd, endGame } from "./end-game.js"
 
 const urlParams = new URLSearchParams(window.location.search)
@@ -17,7 +17,7 @@ let deck = (level === 1) ? generateEasyDeck() : generateDeck()
 const penalty = setRules(level)
 
 document.addEventListener("DOMContentLoaded", async () => {
-    timerStart()
+    level === 3 ? countdown() : timerStart()
     const add3CardsButton = document.getElementById("add3")
     const isSetButton = document.getElementById("isSet")
     const endGameButton = document.getElementById("endGame")
