@@ -39,8 +39,9 @@ export function countdown() {
 
         document.getElementById("timer").textContent = `${txtMin}:${txtSeg}`
 
-        if (minutes < 0) {
-            endGame()
+        if (minutes === 0 && seconds === 0) {
+            clearInterval(timeInterval)
+            document.dispatchEvent(new Event("timerFinished"))
         }
     }, 1000)
 }
