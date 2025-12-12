@@ -3,7 +3,7 @@ import { shuffleDeck } from "../components/deck/shuffle-deck.js"
 import { renderInGrid } from "../components/deck/deck-renderer.js"
 import { setRules } from "./set-rules.js"
 import { initCardSelection, unselectCards } from "../components/deck/card-selection.js"
-import { initHelpButton } from "./help-button.js"
+import { clickHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
 import { existsASetOnTable } from "./check-set.js"
 import { Scoreboard } from "./scoreboard.js"
@@ -106,7 +106,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (level === 1) {
         const helpButton = document.getElementById("help")
         helpButton.addEventListener("click", () => {
-            initHelpButton(setFound)
+
+            clickHelpButton(setFound, selectedCards)
         }
         )
     }

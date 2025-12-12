@@ -37,15 +37,15 @@ export function unselectCards() {
     })
 }
 
-export function autoSelectCards(cardIds) {
+export function autoSelectCards(cardIds, selectedCards) {
     // 1. Deshacer selección anterior
     unselectCards()
     // 2. Seleccionar las nuevas cartas usando selectCard
-    const selected = new Set()
+
     cardIds.forEach(id => {
         const el = document.getElementById(id)
         if (!el) return
 
-        selectCard(el, selected)
+        selectCard(el, selectedCards)
     });
 }
