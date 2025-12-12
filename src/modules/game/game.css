@@ -1,28 +1,33 @@
 /* 2-column layout */
-.game-layout{
+.game-layout {
   display: grid;
-  grid-template-columns: 200px 1fr; /* marcador ancho fijo, resto para grid */
+  grid-template-columns: 200px 1fr;
+  /* marcador ancho fijo, resto para grid */
   gap: 20px;
   width: calc(100% - 40px);
   max-width: 1200px;
-  align-items: stretch; /* clave: hace que la columna izquierda tenga la misma altura */
+  align-items: stretch;
+  /* clave: hace que la columna izquierda tenga la misma altura */
 }
 
 /* LEFT column: marcador */
-#marcador{
+#scoreboard {
   display: grid;
-  place-items: center; /* centra texto pt/bot y hor */
+  place-items: center;
+  /* centra texto pt/bot y hor */
   padding: 20px;
   background: #b3b3b3;
   border-radius: var(--radius);
   height: 50%;
-  text-align: center;  /* centrado del texto */
+  text-align: center;
+  /* centrado del texto */
 }
 
 /* RIGHT column: grid + buttons */
-.game-right{
+.game-right {
   display: grid;
-  grid-template-rows: 1fr auto; /* 1fr -> cards ocupo todo, auto -> botones abajo */
+  grid-template-rows: 1fr auto;
+  /* 1fr -> cards ocupo todo, auto -> botones abajo */
 
 }
 
@@ -32,7 +37,7 @@
   justify-self: center;
 }
 
-/* Grid de cartas*/ 
+/* Grid de cartas*/
 #cardsGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -112,7 +117,7 @@
     grid-row: 2/4;
   }
 
-  #marcador{
+  #scoreboard{
     grid-column: col-start 8 / span 1;
     grid-row: 2/4;
   }
