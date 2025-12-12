@@ -15,35 +15,35 @@
 <body>
     <div class="body-main">
 
-    <header class="topbar"> 
+        <header class="topbar">
 
-    <!--Menú principal-->
-    <nav>
-        <ul class="menu">
-            <li ><a href="../../login/views/welcome.html">Bienvenida</a></li>
-            <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
-            <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
-            <li><a href="../../../views/user-ranking.html">Histórico de partidas</a></li>
-            <li><a href="../../../views/global-ranking.html">Ranking global</a></li>
-        </ul>
-    </nav>
+            <!--Menú principal-->
+            <nav>
+                <ul class="menu">
+                    <li><a href="../../login/views/welcome.html">Bienvenida</a></li>
+                    <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
+                    <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
+                    <li><a href="../../../views/user-ranking.html">Histórico de partidas</a></li>
+                    <li><a href="../../../views/global-ranking.html">Ranking global</a></li>
+                </ul>
+            </nav>
 
-    <!--Selector de tema-->
-    <button id="toggleTheme" class="btn-secondary" style="margin-left:20px;">
-        Cambiar tema
-    </button>
+            <!--Selector de tema-->
+            <button id="toggleTheme" class="btn-secondary" style="margin-left:20px;">
+                Cambiar tema
+            </button>
 
-    <!-- Menú de usuario -->
-    <div class="user-menu">
-        <div class="user-avatar" id="avatar">U</div>
+            <!-- Menú de usuario -->
+            <div class="user-menu">
+                <div class="user-avatar" id="avatar">U</div>
 
-        <div class="user-dropdown" id="userDropdown">
-            <a href="../../../modules/user-config/views/config-user.html">Configuración</a>
-            <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
-        </div>
-    </div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="../../../modules/user-config/views/config-user.html">Configuración</a>
+                    <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
+                </div>
+            </div>
 
-    </header>
+        </header>
     </div>
 
     <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
@@ -60,19 +60,19 @@
         </defs>
     </svg>
 
-<!--    <main class="cuerpo">-->
+    <!--    <main class="cuerpo">-->
     <main class="body-game">
         <!-- Contenido principal de la página -->
         <div class="game-layout">
 
             <div id="marcador">
-                <div id="cronometro" class="cronometro">00:00</div>
-                <p id="k1">Cartas restantes: <span id="v1"></span></p> 
-                <p id="k2">Errores: <span id="v2"></span></p>
-                <p id="k3">Puntuación: <span id="v3"></span></p>
-                <p id="k4">Sets conseguidos: <span id="v4"></span></p>
+                <div id="timer" class="timer">00:00</div>
+                <p id="cardsLeft">Cartas restantes: <span id="cardsLeftCount"></span></p>
+                <p id="errors">Errores: <span id="errorsCount"></span></p>
+                <p id="score">Puntuación: <span id="scoreCount"></span></p>
+                <p id="sets">Sets conseguidos: <span id="setsCount"></span></p>
             </div>
-        
+
             <div class="game-right">
                 <div id="cardsGrid">
                     <div id="cardPosition1" data-void="true"></div>
@@ -94,28 +94,10 @@
 
                 <div id="buttons"></div>
             </div>
-        </div> 
+        </div>
     </main>
 
     <script src="../../../global/services/theme.js"></script>
-    <script type="module">
-
-        import { iniciarCronometro, detenerCronometro, obtenerTiempoFinal } from "../services/reloj.js";
-
-        // Iniciar al cargar la página
-        iniciarCronometro();
-
-        // EJEMPLO — al finalizar el juego:
-        function finalizarPartida() {
-            detenerCronometro();
-
-            const tiempo = obtenerTiempoFinal();
-            console.log("Tiempo final:", tiempo);
-
-            // Aquí puedes enviarlo al backend si quieres
-        }
-    </script>
-
 
 </body>
 

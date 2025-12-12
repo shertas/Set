@@ -14,10 +14,10 @@ class Scoreboard {
         this.setsFound = 0
 
         this.elements = {
-            cardsRemaining: document.getElementById('v1'),
-            errors: document.getElementById('v2'),
-            score: document.getElementById('v3'),
-            setsFound: document.getElementById('v4')
+            cardsRemaining: document.getElementById('cardsLeftCount'),
+            errors: document.getElementById('errorsCount'),
+            score: document.getElementById('scoreCount'),
+            setsFound: document.getElementById('setsCount')
         }
 
         this.updateDisplay()

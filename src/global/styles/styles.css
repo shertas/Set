@@ -584,7 +584,7 @@ form input:focus {
     height: 100vh;
 }
 
-.cronometro {
+.timer {
     font-size: 2rem;
     font-weight: bold;
     font-family: 'Courier New', monospace;
