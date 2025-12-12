@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         addCards = await renderInGrid(shuffledDeck, currentCardIndex, 3)
         currentCardIndex += addCards
         setFound = existsASetOnTable()
+        scoreboard.updateCardsRemaining(addCards)
     }
 
     // Inicializar el marcador
