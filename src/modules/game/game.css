@@ -46,7 +46,7 @@
   /* 3 filas */
   gap: 10px;
   width: 70vw;
-  height: 80vh;
+  height: 70vh;
   flex-grow: 1;
   /* ocupa todo el espacio disponible del body*/
   box-sizing: border-box;
