@@ -19,3 +19,24 @@ export function setRules(level) {
     }
     return penalty
 }
+
+export function pveRules(level, pve) {
+    let opponentSpeed = null
+    if (pve) {
+        const scoreboardDiv = document.getElementById('scoreboard')
+        const text = '<p id="opponentScore">Puntuación oponente: <span id="opponentScoreCount">0</span></p>'
+        scoreboardDiv.innerHTML += text;
+    }
+    switch (level) {
+        case 1: // Easy
+            opponentSpeed = 30
+            break
+        case 2: // Medium
+            opponentSpeed = 20
+            break
+        case 3: // Hard
+            opponentSpeed = 10
+            break
+    }
+    return opponentSpeed
+}
