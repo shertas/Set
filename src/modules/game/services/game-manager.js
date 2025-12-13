@@ -1,15 +1,15 @@
 import { generateDeck, generateEasyDeck } from "../components/deck/deck-generator.js"
 import { shuffleDeck } from "../components/deck/shuffle-deck.js"
-import { renderInGrid } from "../components/deck/deck-renderer.js"
-import { setRules } from "./set-rules.js"
+import { setRules, pveRules } from "./set-rules.js"
 import { initCardSelection, unselectCards } from "../components/deck/card-selection.js"
 import { clickHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
 import { Scoreboard } from "./scoreboard.js"
 import { timerStart, countdown } from "./stopwatch.js"
+import { endGame } from "./end-game.js"
 import { saveScore } from "./save-score.js"
 import { addCards } from "./add-cards.js"
-
+import { timerSetStart, resetTimerSet } from "./opponent-set-interval.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
@@ -46,8 +46,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await addCards(gameState, 12)
 
-
-
+    if (pve) {
+        timerSetStart(opponentSpeed, gameState, selectedCards)
+    }
 
     // Event Listeners
     if (level !== 3) {
@@ -66,6 +67,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (isSet) {
                 // Es un SET correcto - sumar 1 punto
                 scoreboard.addSet(1)
+
+                if (pve) {
+                    resetTimerSet(opponentSpeed, gameState, selectedCards)
+                }
+
                 await addCards(gameState, 3)
             } else {
                 // No es un SET - contabilizar error y aplicar penalización según nivel
@@ -83,6 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
     document.addEventListener("timerFinished", () => {
+        gameEnded = endGame()
         saveScore(scoreboard, pve, level)
     })
 
