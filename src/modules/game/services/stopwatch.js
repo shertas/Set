@@ -2,8 +2,6 @@
 //  CRONÓMETRO CONTROL
 // ------------------------------
 
-import { endGame } from "/src/modules/game/services/end-game.js"
-
 let seconds = 0
 let minutes = 0
 let timeInterval = null
