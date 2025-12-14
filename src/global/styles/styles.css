@@ -652,6 +652,13 @@ form input:focus {
 /*------------------------------------------------
     Login page
 --------------------------------------------------*/
+.img-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 
 .login-container {
     background-color: var(--color-bg-card);
@@ -672,7 +679,7 @@ form input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 60vh;
 }
 
 .invitado-btn {
