@@ -8,6 +8,23 @@ export function saveScore(scoreboard, pve, level) {
         errors: scoreboard.errors,
         score: scoreboard.score,
     }
-    console.log("Saving game state:", gameState)
-    //HACER LLAMADA A BASE DE DATOS AQUI Y BORRAR EL CONSOLE.LOG EL USUARIO SE COGE DE LA SESION EN PHP
+
+    // Enviar los datos al servidor para guardarlos en la base de datos
+    fetch("/src/modules/game/services/save-score.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(gameState),
+        credentials: 'same-origin' // Asegura que se envíen las cookies de sesión
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Score guardado correctamente:", gameState);
+            } else {
+                console.error("Error al guardar el score:", data.error);
+            }
+        })
+        .catch(error => {
+            console.error("Error al guardar el score:", error);
+        });
 }

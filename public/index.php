@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../src/modules/user/db/user-pdo.php';
+require_once __DIR__ . '/../src/modules/user/db/UserPDO.php';
 $pdo = require_once __DIR__ . '/../src/global/db/init.php';
 
 $userBD = new UserPDO($pdo);
