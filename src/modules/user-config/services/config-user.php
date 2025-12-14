@@ -10,12 +10,6 @@ $userBD = new UserPDO($pdo);
 $newName = $_POST['name'] ?? '';
 $newPassword = $_POST['password'] ?? '';
 
-// Si el usuario no está loggeado (es invitado), abortamos la función
-if (!isset($_SESSION['usuario']) || !isset($_SESSION['pass'])) {
-    echo json_encode(['invited' => true]);
-    exit;
-}
-
 // Si se envía sin datos, devolvemos un error
 if (empty($newName) && empty($newPassword)) {
     echo json_encode(['error' => 'Sin datos que actualizar']);

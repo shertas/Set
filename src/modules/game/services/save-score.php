@@ -16,7 +16,6 @@ $data = json_decode(file_get_contents("php://input"), true);
 // Validar que se recibieron todos los datos necesarios
 if (!isset($data['level']) || !isset($data['pve']) || !isset($data['time']) ||
     !isset($data['setsFound']) || !isset($data['errors']) || !isset($data['score']) || !isset($data['date'])) {
-    http_response_code(400);
     echo json_encode(['success' => false, 'error' => 'Datos incompletos']);
     exit;
 }
@@ -24,8 +23,13 @@ if (!isset($data['level']) || !isset($data['pve']) || !isset($data['time']) ||
 try {
     // Verificar que el usuario está en la sesión
     if (!isset($_SESSION['usuario'])) {
-        http_response_code(401);
         echo json_encode(['success' => false, 'error' => 'Usuario no autenticado - sesión no iniciada']);
+        exit;
+    }
+
+    // Si es invitado, no guardar la partida
+    if (isset($_SESSION['is_guest']) && $_SESSION['is_guest'] === true) {
+        echo json_encode(['success' => true, 'message' => 'Partida de invitado - no se guarda en BD']);
         exit;
     }
 
@@ -36,7 +40,6 @@ try {
     $id_user = $gamePDO->getUserIdByUsername($username);
 
     if ($id_user === false) {
-        http_response_code(404);
         echo json_encode(['success' => false, 'error' => 'Usuario no encontrado']);
         exit;
     }
@@ -62,9 +65,7 @@ try {
     }
 
 } catch (PDOException $e) {
-    http_response_code(500);
     echo json_encode(['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()]);
 } catch (Exception $e) {
-    http_response_code(500);
     echo json_encode(['success' => false, 'error' => 'Error: ' . $e->getMessage()]);
 }
