@@ -62,10 +62,18 @@
 
     <!--    <main class="cuerpo">-->
     <main class="body-game">
+        <!-- Panel de fin de juego -->
+        <div id="endGameOverlay" class="end-game-overlay" style="display: none;">
+            <div class="end-game-panel">
+                <h1>Juego terminado</h1>
+                <button id="newGameButton" class="btn-primary">Nueva partida</button>
+            </div>
+        </div>
+
         <!-- Contenido principal de la página -->
         <div class="game-layout">
 
-            <div id="marcador">
+            <div id="scoreboard">
                 <div id="timer" class="timer">00:00</div>
                 <p id="cardsLeft">Cartas restantes: <span id="cardsLeftCount"></span></p>
                 <p id="errors">Errores: <span id="errorsCount"></span></p>
