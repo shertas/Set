@@ -364,7 +364,7 @@
 /* ----------------------------------------
     TITULOS
 ---------------------------------------- */
-.titulo {
+.title {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 15px;
@@ -372,15 +372,15 @@
     margin-bottom: 10px;
 }
 
-.titulo-bienvenida {
+.title-welcome {
     margin-bottom: 50px;
 }
 
-.texto-justificado {
+.justified-text {
     text-align: justify;
 }
 
-.texto-muted {
+.muted-text {
     color: var(--color-text-muted);
 }
 
@@ -682,14 +682,14 @@ form input:focus {
     height: 60vh;
 }
 
-.invitado-btn {
+.guest-btn {
     background: transparent;
     border: none;
     padding: 0;
     margin-top: 12px;
 }
 
-.invitado-link {
+.guest-link {
     display: inline-block;
     margin-top: 12px;
     width: 100%;
@@ -702,12 +702,12 @@ form input:focus {
     transition: background 0.2s;
 }
 
-.invitado-link:hover {
+.guest-link:hover {
     background: var(--color-invitado-bg-hover);
 }
 
 
-.invitado-btn a {
+.guest-btn a {
     display: inline-block;
     padding: 10px 14px;
     border-radius: 8px;
@@ -717,7 +717,7 @@ form input:focus {
     transition: background 0.15s;
 }
 
-.invitado-btn a:hover {
+.guest-btn a:hover {
     background: var(--color-invitado--bg-hover);
 }
 
@@ -747,6 +747,10 @@ form input:focus {
     color: var(--color-alert-text);
 }
 
+
+/*-------------------------------------------------------
+    RESPONSIVE
+----------------------------------------------------------*/
 @media (max-width: 400px) {
     .login-container {
         width: 90%;
