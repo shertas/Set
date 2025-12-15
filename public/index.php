@@ -19,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Login correcto, guardamos en sesión
         $_SESSION['usuario'] = $nombre;
         $_SESSION['pass'] = $pass;
+        // Asegurarse de que no sea invitado
+        unset($_SESSION['is_guest']);
 
         header("Location: ../src/modules/login/views/welcome.html");
         exit;
