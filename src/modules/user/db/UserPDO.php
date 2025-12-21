@@ -22,6 +22,16 @@ class UserPDO
         return $result !== false ? $result : false;
     }
 
+    public function userExists(string $user): bool
+    {
+        $consulta = "SELECT * FROM user WHERE name = :usuario";
+        $stmt = $this->db->prepare($consulta);
+        $stmt->bindParam(':usuario', $user);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result !== false;
+    }
+
     public function userCreate(string $user, string $pass): bool
     {
         $consulta = "INSERT INTO user (name, pass) VALUES (:user, :pass)";
