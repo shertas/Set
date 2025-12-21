@@ -105,3 +105,36 @@ function send_Ajax(name, password){
         alert('Error al actualizar los datos');
     });
 }
+
+// Funcionalidad para eliminar usuario
+document.getElementById("eliminar").addEventListener("click", function() {
+    // Confirmar antes de eliminar
+    if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible.')) {
+        deleteUser();
+    }
+});
+
+function deleteUser() {
+    const formData = new FormData();
+    formData.append('action', 'delete');
+
+    fetch('../services/config-user.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error('Error al eliminar usuario:', data.error);
+            alert('Error: ' + data.error);
+        } else {
+            alert(data.success);
+            // Redirigir al login después de eliminar
+            window.location.href = '/src/modules/login/views/login.html';
+        }
+    })
+    .catch(error => {
+        console.error('Error al eliminar usuario:', error);
+        alert('Error al eliminar el usuario');
+    });
+}

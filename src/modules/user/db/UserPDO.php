@@ -43,10 +43,30 @@ class UserPDO
 
     public function userDelete(User $user): bool
     {
-        $consulta = "DELETE FROM user WHERE name = :user";
-        $stmt = $this->db->prepare($consulta);
-        $stmt->bindParam(':user', $user->getNombre());
-        return $stmt->execute();
+        try {
+            $this->db->beginTransaction();
+
+            $userId = $user->getId();
+
+            // Primero hay que eliminar todas las partidas del usuario
+            $consultaGames = "DELETE FROM game WHERE id_user = :userId";
+            $stmtGames = $this->db->prepare($consultaGames);
+            $stmtGames->bindParam(':userId', $userId);
+            $stmtGames->execute();
+
+            // Luego eliminar el usuario
+            $consultaUser = "DELETE FROM user WHERE id_user = :userId";
+            $stmtUser = $this->db->prepare($consultaUser);
+            $stmtUser->bindParam(':userId', $userId);
+            $stmtUser->execute();
+
+            $this->db->commit();
+            return true;
+
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            return false;
+        }
     }
 
     public function userModify(User $user): bool
