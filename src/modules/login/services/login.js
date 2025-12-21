@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Validación del formulario de registro /cración de usuario
+    // Validación del formulario de registro (creación de usuario)
     registerForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Si todo está bien, enviar el formulario
         registerForm.submit();
     });
+
 
     // Alternar entre formulario de login y registro
     toggleLink.addEventListener("click", function (event) {
