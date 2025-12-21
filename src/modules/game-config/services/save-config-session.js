@@ -6,8 +6,12 @@ export function saveConfigSession(levelValue, pve) {
     })
         .then(response => {
             if (!response.ok) throw new Error("Error al guardar la sesión");
-
-            window.location.href = "/src/modules/game/services/new-game.php";
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                window.location.href = "/src/modules/game/services/new-game.php";
+            }
         })
         .catch(error => console.error("Error al guardar la sesión:", error));
 }

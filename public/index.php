@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../src/modules/user/db/user-pdo.php';
+require_once __DIR__ . '/../src/modules/user/db/UserPDO.php';
 $pdo = require_once __DIR__ . '/../src/global/db/init.php';
 
 $userBD = new UserPDO($pdo);
@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Login correcto, guardamos en sesión
         $_SESSION['usuario'] = $nombre;
         $_SESSION['pass'] = $pass;
+        // Asegurarse de que no sea invitado
+        unset($_SESSION['is_guest']);
 
         header("Location: ../src/modules/login/views/welcome.html");
         exit;

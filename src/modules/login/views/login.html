@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROYECTO SET</title>
+    <link rel="icon" type="image/png" href="/public/assets/img/Set favicon.png">
     <link rel="stylesheet" href="../../../global/styles/styles.css">
 </head>
 
 <body class="body-main">
     <header class="auth-header">PROYECTO SET</header>
+
+    <div class="img-login">
+        <img src="/public/assets/img/Logo set.png" height="200" width="300" alt="Logo Juego Set">
+    </div>
+
 
     <!-- Contenido principal de la página -->
     <div class="login-wrapper">
@@ -22,7 +28,7 @@
                 <strong>Error:</strong> Usuario o contraseña incorrectos.
             </div>
 
-            <form action="/public/index.php" method="POST">
+            <form action="../../../../public/index.php" method="POST">
 
                 <label for="user">Usuario</label>
                 <input type="text" id="user" name="user" autocomplete="off">
@@ -32,7 +38,7 @@
 
                 <button type="submit">Entrar</button>
 
-                <a href="welcome.html" class="btn-secondary invitado-link">Entrar como invitado</a>
+                <a href="../services/guest-login.php" class="btn-secondary guest-link">Entrar como invitado</a>
 
             </form>    
         </div>

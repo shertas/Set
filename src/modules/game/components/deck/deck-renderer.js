@@ -2,11 +2,10 @@ import { renderCards } from "./card-renderer.js"
 export async function renderInGrid(deck, startIndex, cardsNumber) {
     const cards = deck.slice(startIndex, startIndex + cardsNumber)
     const cardsLeft = deck.length - (startIndex + cardsNumber)
-    if (cardsLeft < cardsNumber) {
+    if (cardsLeft < 0) {
         alert("No hay suficientes cartas en el mazo.")
-        const newCards = 0
-        const setFound = null
-        return { newCards, setFound }
+        let newCards = 0
+        return newCards
     }
     else {
         const newCards = await renderCards(cards)

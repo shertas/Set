@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../user/models/user.php';
-require_once __DIR__ . '/../../user/db/user-pdo.php';
+require_once __DIR__ . '/../../user/db/UserPDO.php';
 $pdo = require_once __DIR__ . '/../../../global/db/init.php';
 
 $userBD = new UserPDO($pdo);
@@ -9,12 +9,6 @@ $userBD = new UserPDO($pdo);
 // Datos de Ajax
 $newName = $_POST['name'] ?? '';
 $newPassword = $_POST['password'] ?? '';
-
-// Si el usuario no está loggeado (es invitado), abortamos la función
-if (!isset($_SESSION['usuario']) || !isset($_SESSION['pass'])) {
-    echo json_encode(['invited' => true]);
-    exit;
-}
 
 // Si se envía sin datos, devolvemos un error
 if (empty($newName) && empty($newPassword)) {

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROYECTO SET</title>
-    <link rel="stylesheet" href="../global/styles/styles.css">
+    <link rel="icon" type="image/png" href="/public/assets/img/Set favicon.png">
+    <link rel="stylesheet" href="../../../global/styles/styles.css">
 </head>
 
 <body class="body-main">
@@ -15,11 +16,11 @@
     <!--Menú principal-->
     <nav>
         <ul class="menu">
-            <li ><a href="../../src/modules/login/views/welcome.html">Bienvenida</a></li>
-            <li><a href="../../src/modules/game/services/new-game.php">Nuevo juego</a></li>
-            <li><a href="../../src/modules/game-config/views/game-config.html">Configuración de partida</a></li>
-            <li><a href="../../src/views/user-ranking.html">Histórico de partidas</a></li>
-            <li><a href="../../src/views/global-ranking.html">Ranking global</a></li>
+            <li ><a href="../../login/views/welcome.html">Bienvenida</a></li>
+            <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
+            <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
+            <li><a href="../views/user-ranking.html">Histórico de partidas</a></li>
+            <li><a href="../views/global-ranking.html">Ranking global</a></li>
         </ul>
     </nav>
 
@@ -33,8 +34,8 @@
         <div class="user-avatar" id="avatar">U</div>
 
         <div class="user-dropdown" id="userDropdown">
-            <a href="../../src/modules/user-config/views/config-user.html">Configuración</a>
-            <a href="../../src/modules/login/views/login.html">Cerrar sesión</a>
+            <a href="../../user-config/views/config-user.html">Configuración</a>
+            <a href="../../login/views/login.html">Cerrar sesión</a>
         </div>
     </div>
 
@@ -44,7 +45,7 @@
 
     <div class="table-wrapper">
         
-        <h2 class="titulo">Ranking global</h2>
+        <h2 class="title">Ranking global</h2>
 
         <table class="table">
             <thead>
@@ -90,7 +91,7 @@
         </table>
     </div>
 
-    <script src="../global/services/user-menu.js"></script>
-    <script src="../global/services/theme.js"></script>
+    <script src="../../../global/services/user-menu.js"></script>
+    <script src="../../../global/services/theme.js"></script>
 </body>
 </html>

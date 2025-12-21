@@ -14,3 +14,18 @@ export function resolveSet(selectedIds) {
     alert("❌ No es un SET")
     return false
 }
+
+export function resolveSetPVE(selectedIds) {
+    const result = isASet(selectedIds)
+    // Vaciar las posiciones de las cartas seleccionadas
+    if (result) {
+        for (const id of selectedIds) {
+            const cardPosition = document.getElementById(id)
+            cardPosition.innerHTML = ""
+            cardPosition.setAttribute('data-void', 'true')
+        }
+        alert("✔️ ¡El oponente ha conseguido un SET!")
+        return true
+    }
+    return false
+}
