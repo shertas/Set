@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Event Listeners
     if (level !== 3) {
         add3CardsButton.addEventListener("click", async () => {
-            await add3Cards(gameState)
+            await addCards(gameState, 3)
         })
     }
     isSetButton.addEventListener("click", async () => {
