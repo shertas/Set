@@ -21,14 +21,19 @@
     <div class="login-wrapper">
 
         <div class="login-container">
-            
-            <h1>Iniciar Sesión</h1>
+
+            <h1 id="form-title">Iniciar Sesión</h1>
 
             <div id="error-message" class="error-message" style="display:none;">
                 <strong>Error:</strong> Usuario o contraseña incorrectos.
             </div>
 
-            <form action="../../../../public/index.php" method="POST">
+            <div id="success-message" class="success-message" style="display:none;">
+                <strong>Éxito:</strong> Usuario creado correctamente. Ahora puedes iniciar sesión.
+            </div>
+
+            <!-- Formulario de Login -->
+            <form id="login-form" action="../../../../public/index.php" method="POST">
 
                 <label for="user">Usuario</label>
                 <input type="text" id="user" name="user" autocomplete="off">
@@ -40,7 +45,31 @@
 
                 <a href="../services/guest-login.php" class="btn-secondary guest-link">Entrar como invitado</a>
 
-            </form>    
+            </form>
+
+            <!-- Formulario de Registro -->
+            <form id="register-form" action="../services/register.php" method="POST" style="display:none;">
+
+                <div id="register-error-message" class="error-message" style="display:none;"></div>
+
+                <label for="new-user">Usuario</label>
+                <input type="text" id="new-user" name="new-user" autocomplete="off">
+
+                <label for="new-password">Contraseña</label>
+                <input type="password" id="new-password" name="new-password">
+
+                <label for="confirm-password">Confirmar Contraseña</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+
+                <button type="submit">Crear Usuario</button>
+
+            </form>
+
+            <!-- Botón para alternar entre login y registro -->
+            <div class="toggle-form">
+                <p id="toggle-text">¿No tienes cuenta? <a href="#" id="toggle-link">Crear una nueva</a></p>
+            </div>
+
         </div>
 
     </div>
