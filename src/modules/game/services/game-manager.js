@@ -10,6 +10,7 @@ import { endGame } from "./end-game.js"
 import { saveScore } from "./save-score.js"
 import { addCards } from "./add-cards.js"
 import { timerSetStart, resetTimerSet } from "./opponent-set-interval.js"
+import { cardsNumberInTable } from "./cards-number-in-table.js"
 
 const urlParams = new URLSearchParams(window.location.search)
 const level = parseInt(urlParams.get('level')) || 2
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Event Listeners
     if (level !== 3) {
         add3CardsButton.addEventListener("click", async () => {
-            await add3Cards(gameState)
+            await addCards(gameState, 3)
         })
     }
     isSetButton.addEventListener("click", async () => {
@@ -71,8 +72,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (pve) {
                     resetTimerSet(opponentSpeed, gameState, selectedCards)
                 }
+                let cardsInTable = cardsNumberInTable()
+                let cardsToAdd = (cardsInTable < 12) ? 3 : 0
+                await addCards(gameState, cardsToAdd)
 
-                await addCards(gameState, 3)
             } else {
                 // No es un SET - contabilizar error y aplicar penalización según nivel
                 scoreboard.addError()
