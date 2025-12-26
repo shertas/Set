@@ -52,13 +52,13 @@ class GamePDO
         return $stmt->execute();
     }
 
-    //Obtiene todos los juegos con el nombre del usuario
-    public function getAllGamesWithUsernames(): array
+    //Obtiene todos los juegos ordenados por puntuación
+    public function getAllGamesByScore(): array
     {
         $sql = "SELECT g.id_game, g.date, g.level, g.time, g.score, g.correct_set, g.incorrect_set, u.name as username
                 FROM game g
                 INNER JOIN user u ON g.id_user = u.id_user
-                ORDER BY g.date DESC";
+                ORDER BY g.score DESC";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
