@@ -27,6 +27,6 @@ if (!$idUser) {
 }*/
 
 // Obtener partidas usuarios
-$games = $gamePDO->getAllGamesWithUsernames();
+$games = $gamePDO->getAllGamesByScore();
 
 echo json_encode(['success' => true, 'games' => $games]);
