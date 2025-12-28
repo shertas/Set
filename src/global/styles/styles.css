@@ -806,6 +806,7 @@ form input:focus {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: auto;/*Mirar esto como hacerlo mejor*/
     }
 
     /* Ocultar botón del header */

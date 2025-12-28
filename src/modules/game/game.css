@@ -104,35 +104,6 @@
   border-radius: 10px;
 }
 
-/*
-/* Responsivo: apilar en pantallas pequeñas - mirarlo sigue fallando 
-@media (max-width: 800px){
-  
-  .menu{
-    grid-column: col-start / span 2;
-    grid-row: 1/5;
-  }
-
-  .user-menu{
-    grid-column: col-start 3 / span 1;
-  }
-
-  .cardsGrid{
-    grid-column: col-start 5 / span 2;
-    grid-row: 2/4;
-  }
-
-  #scoreboard{
-    grid-column: col-start 8 / span 1;
-    grid-row: 2/4;
-  }
-
-  #buttons{
-    grid-column: col-start / span 10;
-  }
-}*/
-
-
 /* Panel de fin de juego - Overlay */
 .end-game-overlay {
   position: absolute;
@@ -165,4 +136,292 @@
   font-size: 1.2rem;
   padding: 15px 30px;
   cursor: pointer;
+}
+
+/*-------------------------------------------------------
+    RESPONSIVE
+----------------------------------------------------------*/
+
+/*
+@media (max-width: 768px){
+
+  body {
+    font-size: 14px; 
+  }
+
+  /* El layout deja de ser 2 columnas
+  .game-layout {
+    width: 100%;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    gap: 12px;
+    box-sizing: border-box; 
+  }
+
+  /* Marcador arriba 
+  #scoreboard {
+    order: 1;
+
+    margin-bottom: 15px;
+    height: auto;
+
+    height: auto;
+
+    grid-template-columns: repeat(2, 1fr);
+
+
+    flex-shrink: 0; /* No permite que se encoja 
+
+      width: auto;
+  max-width: 240px;
+  margin: 0 auto 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  }
+
+    #scoreboard p {
+    margin: 0; 
+    font-size: 0.85rem;
+  }
+
+  .game-right{
+    order:2;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Esto empuja los botones hacia abajo 
+    gap: 10px;
+
+  }
+
+  /* Botones debajo
+  #buttons {
+    order: 3;
+    width: 100%;
+    margin-top: auto;
+    align-self: center;
+
+    flex-shrink: 0;
+  }
+
+  /* Grid de cartas en móvil 
+  #cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    width: 100%;
+    height: auto;
+    gap: 4px;
+
+        flex-grow: 1; /* Crece para ocupar el espacio vertical disponible en game-right*
+    max-height: none;
+    max-width: none;
+  }
+
+  .card {
+    aspect-ratio: 3 / 4;
+
+        height: auto; /* Anula height: 100% de escritorio
+    width: 100%;
+    transform: none;
+    margin: 0;
+    padding: 6px;
+
+      border-width: 1.5px;    /* opcional: bordes un poco más delgados 
+  border-radius: 6px;
+
+  }
+
+  .shape svg {
+    height: 65%;
+    width: auto;
+  }
+
+  #cardsGrid {
+    gap: 0;
+  }
+
+
+/* Timer: pequeño y dentro del marcador 
+#timer {
+  background: #222;
+  color: #1ea7ff;         /* ejemplo (azul) 
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 1.1rem;      /* más pequeño en móvil 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+}*/
+
+/* ----- Overrides adicionales para móvil (ajuste fino) ----- */
+@media (max-width: 768px) {
+  /* Layout y orden: marcador arriba -> tablero -> botones */
+  .game-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto; /* evitar que la zona de juego (game-right) estire con 1fr */
+    width: 100%;
+    padding: 8px;
+    gap: 8px; /* reducir gap general */
+    box-sizing: border-box;
+    height: auto !important; /* asegurar que no ocupe toda la ventana */
+  }
+
+  .body-game { padding-top: 8px; margin-top: 0; }
+
+  /* Ajustes del avatar en móvil: bajarlo y colocarlo en la esquina derecha */
+  .user-menu {
+    position: absolute;
+    top: 8px; /* bajar un poco para que no corte con el borde superior */
+    right: env(safe-area-inset-right, 10px);
+  }
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    border-radius: 50%;
+    overflow: visible; /* asegurar que el círculo no se recorte */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Scoreboard: compacto y panel gris que contiene todo el texto */
+  #scoreboard {
+    order: 1;
+    width: calc(100% - 16px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 4px 8px; /* menos padding para ganar espacio */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto; /* fila 1: timer, filas 2-3: textos */
+    gap: 0; /* eliminar espacio entre timer y textos */
+    align-items: start; /* asegurar que timer y textos estén en filas separadas */
+    justify-items: center;
+    background: #b3b3b3;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    box-sizing: border-box;
+    height: auto; /* importante: que incluya todo el contenido */
+  }
+
+  /* Timer ocupa fila 1 (toda la anchura) y está centrado dentro del panel gris */
+  #timer {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    justify-self: center;
+    background: #222;
+    color: #1ea7ff;
+    padding: 2px 6px; /* reducir padding para ahorrar px */
+    border-radius: 6px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  /* Texto del marcador dentro del panel gris: dos columnas bajo el timer */
+  #scoreboard p { 
+    margin: 0; 
+    font-size: 0.8rem; 
+    text-align: left; 
+    padding: 1px 4px; 
+    box-sizing: border-box; 
+  }
+
+  /* Stats: fila 2 */
+  #cardsLeft { grid-row: 2; grid-column: 1; justify-self: start; }
+  #errors { grid-row: 2; grid-column: 2; justify-self: end; }
+
+  /* Stats: fila 3 */
+  #score { grid-row: 3; grid-column: 1; justify-self: start; }
+  #sets  { grid-row: 3; grid-column: 2; justify-self: end; }
+
+  .game-right {
+    order: 2;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto; /* no expandir con 1fr para evitar huecos verticales */
+    gap: 8px;
+    min-height: 0;
+  }
+
+  /* Tablero móvil: 3 filas x 5 columnas (5ª columna reservada) */
+  #cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr); /* exactamente 3 filas visibles */
+    gap: 0; /* eliminar separaciones entre cartas */
+    width: 100%;
+    max-width: 880px; /* mantener tablero centrado en pantallas anchas */
+    margin: 0 auto;
+    /* altura reducida para cartas más pequeñas y dejar espacio para marcador/botones */
+    height: calc(100vh - 64px - 150px - env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    padding: 0; /* aprovechar todo el espacio */
+    align-content: stretch; /* que las filas ocupen todo el alto disponible */
+    justify-items: stretch;
+    align-items: stretch;
+    overflow: hidden; /* ocultar posiciones fuera de las 3x5 visibles */
+  }
+
+  /* Cada celda se comporta como contenedor con la misma proporción */
+  #cardsGrid > div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0; /* eliminar padding para quitar huecos */
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px; /* reducir padding para cartas aún más pequeñas */
+    margin: 0;
+    border-width: 1px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .shape svg {
+    width: auto;
+    height: auto;
+    max-height: 70%; /* símbolos más pequeños para cartas reducidas */
+    max-width: 70%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Botones: sticky bottom para que asomen y sean visibles sin obligar a hacer scroll completo */
+  #buttons {
+    order: 3;
+    width: 100%;
+    margin: 4px 0 6px 0; /* subir botones un poco */
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 8px;
+    position: sticky; /* se pega al fondo de la ventana cuando se hace scroll */
+    bottom: env(safe-area-inset-bottom, 8px);
+    z-index: 250;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+    border-radius: 8px;
+  }
 }

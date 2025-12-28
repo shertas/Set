@@ -8,13 +8,16 @@
     <link rel="icon" type="image/png" href="/public/assets/img/Set favicon.png">
     <link rel="stylesheet" href="../../../global/styles/styles.css">
     <link rel="stylesheet" href="../game.css">
-    <script type="module" src="../services/game-manager.js"></script>
-    <script src="../../../global/services/user-menu.js"></script>
 </head>
 
 <body>
     <div class="body-main">
 
+        <!--Menu Hamburguesa solo móvil-->
+        <button id="hamburger-btn" aria-label="Open menu">
+            ☰
+        </button>
+        
         <header class="topbar">
 
             <!--Menú principal-->
@@ -28,8 +31,8 @@
                 </ul>
             </nav>
 
-            <!--Selector de tema-->
-            <button id="toggleTheme" class="btn-secondary" style="margin-left:20px;">
+            <!--Selector de tema por si acaso id="toggleTheme" -->
+            <button class="btn-secondary" data-theme-toggle style="margin-left:20px;">
                 Cambiar tema
             </button>
 
@@ -42,8 +45,32 @@
                     <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
                 </div>
             </div>
-
         </header>
+
+        <!--Menu móvil-->
+        <nav id="mobile-menu">
+            <ul>
+                <hr>                    
+                <li><a href="../../login/views/welcome.html">Bienvenida</a></li>
+                <hr>
+                <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
+                <hr>
+                <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
+                <hr>
+                <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
+                <hr>
+                <li><a href="../../rankings/views/global-ranking.html">Ranking global</a></li>
+                <hr>
+            </ul>
+
+            <button class="btn-secondary mobile-theme-btn" data-theme-toggle>
+                Cambiar tema
+            </button>
+
+        </nav>
+
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
     </div>
 
     <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +132,10 @@
         </div>
     </main>
 
+    <script type="module" src="../services/game-manager.js"></script>
+    <script src="../../../global/services/user-menu.js"></script>
     <script src="../../../global/services/theme.js"></script>
+    <script src="../../../global/services/mobile-menu.js"></script>
 
 </body>
 
