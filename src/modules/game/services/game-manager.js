@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         setFound: false,
         gameEnded: false,
         level,
-        pve
+        pve,
+        noCardsWarningShown: false
     }
 
 

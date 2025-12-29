@@ -24,10 +24,13 @@
                         const date = new Date(game.date);
                         const formattedDate = date.toLocaleDateString('es-ES');
 
+                        // Formatear PvE (convertir 1/0 a Sí/No)
+                        const pveText = game.pve == 1 ? 'Sí' : 'No';
+
                         row.innerHTML = `
-                            <td>${game.id_game}</td>
                             <td>${formattedDate}</td>
                             <td>${game.level}</td>
+                            <td>${pveText}</td>
                             <td>${game.time}</td>
                             <td>${game.correct_set}</td>
                             <td>${game.incorrect_set}</td>

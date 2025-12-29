@@ -26,8 +26,8 @@ class GamePDO
     //Guarda un nuevo registro de juego en la base de datos
     public function saveGame(Game $game, int $idUser): bool
     {
-        $sql = "INSERT INTO game (date, level, time, score, correct_set, incorrect_set, id_user)
-                VALUES (:date, :level, :time, :score, :correct_set, :incorrect_set, :id_user)";
+        $sql = "INSERT INTO game (date, level, pve, time, score, correct_set, incorrect_set, id_user)
+                VALUES (:date, :level, :pve, :time, :score, :correct_set, :incorrect_set, :id_user)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -36,6 +36,7 @@ class GamePDO
         // Convertir fecha ISO 8601 a formato MySQL (YYYY-MM-DD HH:MM:SS)
         $date = date('Y-m-d H:i:s', strtotime($dateISO));
         $level = $game->getLevel();
+        $pve = $game->getPve();
         $time = $game->getTime();
         $score = $game->getScore();
         $correctSet = $game->getSetsFound();
@@ -43,6 +44,7 @@ class GamePDO
 
         $stmt->bindParam(':date', $date);
         $stmt->bindParam(':level', $level, PDO::PARAM_INT);
+        $stmt->bindParam(':pve', $pve, PDO::PARAM_BOOL);
         $stmt->bindParam(':time', $time);
         $stmt->bindParam(':score', $score, PDO::PARAM_INT);
         $stmt->bindParam(':correct_set', $correctSet, PDO::PARAM_INT);
@@ -52,13 +54,14 @@ class GamePDO
         return $stmt->execute();
     }
 
-    //Obtiene todos los juegos ordenados por puntuación
+    //Obtiene todos los juegos ordenados por nivel y puntuación (excluye partidas PvE)
     public function getAllGamesByScore(): array
     {
-        $sql = "SELECT g.id_game, g.date, g.level, g.time, g.score, g.correct_set, g.incorrect_set, u.name as username
+        $sql = "SELECT g.id_game, g.date, g.level, g.pve, g.time, g.score, g.correct_set, g.incorrect_set, u.name as username
                 FROM game g
                 INNER JOIN user u ON g.id_user = u.id_user
-                ORDER BY g.score DESC";
+                WHERE g.pve = 0
+                ORDER BY g.level DESC, g.score DESC";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
@@ -72,6 +75,7 @@ class GamePDO
                     g.id_game,
                     g.date,
                     g.level,
+                    g.pve,
                     g.time,
                     g.score,
                     g.correct_set,
