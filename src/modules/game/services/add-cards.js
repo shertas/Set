@@ -7,7 +7,8 @@ export async function addCards(state, cards) {
     const added = await renderInGrid(
         state.shuffledDeck,
         state.currentCardIndex,
-        cards
+        cards,
+        state
     )
 
     state.currentCardIndex += added
