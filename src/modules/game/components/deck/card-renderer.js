@@ -1,3 +1,5 @@
+import { showToast } from "../../../../global/services/notifications.js"
+
 export async function renderCards(cards) {
   let position = 1
   let cardsChanged = 0
@@ -21,7 +23,7 @@ export async function renderCards(cards) {
       }
     }
     if (!cardPlaced) {
-      alert("No hay más espacio para colocar cartas")
+      showToast("No hay más espacio para colocar cartas", { type: 'error', duration: 3000 })
       break
     }
   }

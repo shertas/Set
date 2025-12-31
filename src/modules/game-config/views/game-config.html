@@ -10,22 +10,28 @@
     <script type="module" src="./../services/game-config-manager.js"></script>
 </head>
 
-<body class="body-main">
+<body class="body-main"  data-page="game-config">
+
+    <!--Menu Hamburguesa solo móvil-->
+    <button id="hamburger-btn" aria-label="Open menu">
+        ☰
+    </button>.
+
     <header class="topbar"> 
 
         <!--Menú principal-->
         <nav>
             <ul class="menu">
-                <li ><a href="../../login/views/welcome.html">Bienvenida</a></li>
+                <li><a href="../../login/views/welcome.html">Bienvenida</a></li>
                 <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
-                <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
+                <li><a data-page="game-config" href="../../game-config/views/game-config.html">Configuración de partida</a></li>
                 <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
                 <li><a href="../../rankings/views/global-ranking.html">Ranking global</a></li>
             </ul>
         </nav>
 
         <!--Selector de tema-->
-        <button id="toggleTheme" class="btn-secondary" style="margin-left:20px;">
+        <button class="btn-secondary" data-theme-toggle style="margin-left:20px;">
             Cambiar tema
         </button>
 
@@ -38,8 +44,29 @@
                 <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
             </div>
         </div>
-
     </header>
+
+    <!--Menu móvil-->
+    <nav id="mobile-menu">
+        <ul>
+            <hr>
+            <li ><a href="../../login/views/welcome.html">Bienvenida</a></li>
+            <hr>
+            <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
+            <hr>
+            <li><a data-page="game-config" href="../../game-config/views/game-config.html">Configuración de partida</a></li>
+            <hr>
+            <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
+            <hr>
+            <li><a href="../../rankings/views/global-ranking.html">Ranking global</a></li>
+        </ul>
+
+        <button class="btn-secondary mobile-theme-btn" data-theme-toggle>
+            Cambiar tema
+        </button>
+    </nav>
+
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
 
     <!-- Contenido principal de la página -->
     <main class="main-content">
@@ -79,6 +106,7 @@
 
     <script src="../../../global/services/user-menu.js"></script>
     <script src="../../../global/services/theme.js"></script>
-
+    <script src="../../../global/services/mobile-menu.js"></script>
+    <script src="../../../global/services/current-page.js"></script>
 </body>
 </html>
