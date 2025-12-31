@@ -11,12 +11,17 @@
 
 <body class="body-main">
 
+    <!--Menu Hamburguesa solo móvil-->
+    <button id="hamburger-btn" aria-label="Open menu">
+        ☰
+    </button>
+
     <header class="topbar"> 
 
         <!--Menú principal-->
         <nav>
             <ul class="menu">
-                <li ><a href="../../login/views/welcome.html">Bienvenida</a></li>
+                <li><a href="../../login/views/welcome.html">Bienvenida</a></li>
                 <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
                 <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
                 <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
@@ -25,8 +30,9 @@
         </nav>
 
         <!--Selector de tema-->
-        <button id="toggleTheme" class="btn-secondary" style="margin-left:20px;">
-            Cambiar tema
+        <button class="btn-secondary theme-toggle" data-theme-toggle aria-label="Toggle theme">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
         </button>
 
         <!-- Menú de usuario -->
@@ -38,19 +44,41 @@
                 <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
             </div>
         </div>
-
     </header>
 
-    <h2 class="title">Configuración del Usuario</h2>
+    <!--Menu móvil-->
+    <nav id="mobile-menu">
+        <ul>
+            <hr>   
+            <li ><a href="../../login/views/welcome.html">Bienvenida</a></li>
+            <hr>   
+            <li><a href="../../game/services/new-game.php">Nuevo juego</a></li>
+            <hr>   
+            <li><a href="../../game-config/views/game-config.html">Configuración de partida</a></li>
+            <hr>   
+            <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
+            <hr>   
+            <li><a href="../../rankings/views/global-ranking.html">Ranking global</a></li>
+        </ul>
+
+        <!--Selector de tema-->
+        <button class="btn-secondary theme-toggle" data-theme-toggle aria-label="Toggle theme">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+        </button>
+    </nav>
+
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
 
     <!-- Contenido principal de la página -->
     <div class="wrapper">
 
         <div class="container">
 
+            <h2 class="title">Configuración del Usuario</h2>
+
             <div id="text_message" class="error-message" style="display: none;"></div>
-            <h1>Configuración</h1>   
-            
+
             <!--Mensaje de error de validación-->
             <div id="error-message" class="error-message" style="display:none;">
                 <strong>Error:</strong> Usuario o contraseña incorrectos.
@@ -80,5 +108,6 @@
     <script src="../../../global/services/user-menu.js"></script>
     <script src="../../../global/services/theme.js"></script>
     <script src="../services/config-user.js"></script>
+    <script src="../../../global/services/mobile-menu.js"></script>
 </body>
 </html>

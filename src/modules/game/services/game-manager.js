@@ -4,6 +4,7 @@ import { setRules, pveRules } from "./set-rules.js"
 import { initCardSelection, unselectCards } from "../components/deck/card-selection.js"
 import { clickHelpButton } from "./help-button.js"
 import { resolveSet } from "./resolve-set.js"
+import { showToast } from "../../../global/services/notifications.js"
 import { Scoreboard } from "./scoreboard.js"
 import { timerStart, countdown } from "./stopwatch.js"
 import { endGame } from "./end-game.js"
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     isSetButton.addEventListener("click", async () => {
         const selectedIds = Array.from(selectedCards)
         if (selectedIds.length !== 3) {
-            alert("Selecciona 3 cartas para verificar un SET.")
+            showToast("Selecciona 3 cartas para verificar un SET.", { type: 'error', duration: 2400 })
         } else {
             let isSet = resolveSet(selectedIds)
             unselectCards()
