@@ -1,36 +1,46 @@
+🃏 Proyecto Académico: Set Game
 
-Cada desarrollador debe:
+  Este proyecto consiste en el desarrollo de una versión web interactiva del popular juego de mesa "Set". La aplicación está diseñada para ser accesible e intuitiva para cualquier usuario, priorizando la usabilidad y la experiencia de juego.
+  Aunque no soluciona un problema real, su valor académico reside en la implementación de una lógica de juego compleja, validaciones en tiempo real, un sistema de puntuación persistente y la inclusión de modos de juego contra la máquina.
 
-- Instalar dependencias: ejecutar `composer install` en la raíz del repositorio (una sola vez por máquina).
-- Crear su propio fichero de entorno `.env` y rellenando las variables privadas (DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME). No subir `.env` al repo.
-- Ejecutar la aplicación usando el método que prefiera:
-  - Servidor embebido de PHP (rápido para desarrollo): `php -S localhost:8000 -t public`.
-  - XAMPP/Apache en Windows: crear un VirtualHost que apunte a la carpeta `.../Set/public` o mover el proyecto a `C:\xampp\htdocs` y acceder por la URL correspondiente, en mi caso es `http://localhost/Set/public/index.php`
+🚀 Funcionalidades Principales (Casos de Uso)
+
+  El sistema de juego ofrece las siguientes características clave:
+
+  — Inicio de sesión del usuario registrado
+  — Acceso como invitado
+  — Gestión de perfil (modificación de nombre y contraseña)
+  — Configuración e inicio de partidas (selección de dificultad)
+  — Solicitud de pistas durante el juego
+  — Visualización de rankings (historial individual y global)
+  — Modo de juego competitivo contra la máquina (PvE)
+  — Gestión de cuentas (creación y eliminación de usuario)
+
+🛠️ Tecnologías Utilizadas
+
+  El proyecto se ha desarrollado utilizando un stack tecnológico moderno, visible en el siguiente diagrama de arquitectura:
+  
+  Área	              Tecnología	                      Descripción
+  Frontend	          HTML5, CSS3, JavaScript	          Estructura, estilos (con Tailwind CSS) e interactividad.
+  Backend	            PHP (>=7.4)                       Lógica del juego, control de sesiones y gestión de datos.
+  BDD	                MySQL / MariaDB	                  Gestor de BBDD para la persistencia de usuarios y puntuaciones.
+  Nube	              Aiven	                            Almacenamiento remoto de la base de datos.
+  Variables Entorno	  vlucas/phpdotenv	                Gestión segura de variables de entorno.
+  DevOps	            Git/GitHub, Docker	              Control de versiones, contenedores y despliegue en Render.
+
+☁️ Despliegue y Acceso
+
+  La aplicación es una web app pura, por lo que no requiere instalación local compleja por parte del usuario final. El proyecto está configurado para un entorno de desarrollo profesional utilizando Docker para la contenedorización y Render para el despliegue continuo.
+  Una vez desplegada, simplemente se accede a través de una URL pública.
+  URL de la Demo: [Insertar aquí el enlace de Render]
+
+🧑‍💻 Autoría y Contacto
+
+  Este proyecto ha sido desarrollado por:
+  Alberto Arias López
+  Ana Hernánz Carro
+  Christian I. Espinal Barrera
 
 
-Para comprobar rápidamente la conexión a la BD se puede ejecutar el script de verificación por CLI: `php public/index.php`.
-
-## Base de datos y acceso remoto (Aiven)
-- Cada desarrollador debe usar su propio `.env` con las credenciales proporcionadas por el administrador de la BD.
-- Para comprobar conectividad desde tu máquina:
-
-```powershell
-Test-NetConnection -ComputerName <DB_HOST> -Port <DB_PORT>
-```
-
-
-## Troubleshooting rápido
-
-- `vendor/` NO debe subirse al repo. Cada dev debe ejecutar `composer install`.
-- Si la página funciona por CLI (`php public/index.php`) pero no desde Apache:
-  - Verificar que Apache sirve la carpeta `public` (DocumentRoot / VirtualHost).
-  - Usar `phpinfo()` servido por Apache para ver qué `php.ini` y extensiones están activas (PDO, pdo_mysql).
-  - Evitar servir el proyecto desde carpetas sincronizadas por OneDrive/Dropbox; puede provocar locks o permisos extraños.
-- Mensaje Xdebug: `Xdebug: [Step Debug] Could not connect to debugging client` es informativo y no impide la ejecución; desactivar Xdebug en el `php.ini` si se desea.
-
-## Buenas prácticas del equipo
-- Mantener `main` estable; usar ramas para features/fixes.
-- No subir `.env` ni `vendor/`.
-- Hacer commits descriptivos y semánticos, en inglés.
 
 
