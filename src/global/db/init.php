@@ -24,17 +24,21 @@ if (file_exists($envFile)) {
 
 // Crear la conexión usando la clase Db
 try {
-    
-    $pdo = Db::getConexion(
-        $_ENV['DB_HOST'],
-        $_ENV['DB_PORT'],
-        $_ENV['DB_NAME'],
-        $_ENV['DB_USER'],
-        $_ENV['DB_PASS']
-    );
+
+    $host = $_ENV['DB_HOST'] ?? getenv('DB_HOST');
+    $port = $_ENV['DB_PORT'] ?? getenv('DB_PORT');
+    $db   = $_ENV['DB_NAME'] ?? getenv('DB_NAME');
+    $user = $_ENV['DB_USER'] ?? getenv('DB_USER');
+    $pass = $_ENV['DB_PASS'] ?? getenv('DB_PASS');
+
+    $pdo = Db::getConexion($host, $port, $db, $user, $pass);
+
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Database connection error']);
+    echo json_encode([
+        'error' => 'Database connection error',
+        'message' => $e->getMessage()]);
+    
     die;
 }
 
