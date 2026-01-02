@@ -11,13 +11,20 @@ use App\db\Db;
 use Dotenv\Dotenv;
 
 // Ruta a la raíz del proyecto
+
 $rootPath = dirname(__DIR__, 3);
 
-$dotenv = Dotenv::createImmutable($rootPath);
-$dotenv->load();
+// Cargar .env SOLO si existe (local)
+
+$envFile = $rootPath . '/.env';
+if (file_exists($envFile)) {
+    $dotenv = Dotenv::createImmutable($rootPath);
+    $dotenv->load();
+}
 
 // Crear la conexión usando la clase Db
 try {
+    
     $pdo = Db::getConexion(
         $_ENV['DB_HOST'],
         $_ENV['DB_PORT'],
