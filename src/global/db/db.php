@@ -35,6 +35,7 @@ class Db
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_CASE => PDO::CASE_NATURAL,
+            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
         ];
 
         // Support for Aiven CA certificate
