@@ -6,6 +6,7 @@ RUN apt-get update \
     default-mysql-client \
     zip unzip git \
     libssl-dev \
+    libonig-dev \
   && docker-php-ext-install pdo_mysql mbstring \
   && rm -rf /var/lib/apt/lists/*
 
