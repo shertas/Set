@@ -23,7 +23,7 @@
   Área	              Tecnología	                      Descripción
   Frontend	          HTML5, CSS3, JavaScript	          Estructura, estilos (con Tailwind CSS) e interactividad.
   Backend	            PHP (>=7.4)                       Lógica del juego, control de sesiones y gestión de datos.
-  BDD	                MySQL / MariaDB	                  Gestor de BBDD para la persistencia de usuarios y puntuaciones.
+  BBDD	                MySQL / MariaDB	                  Gestor de BBDD para la persistencia de usuarios y puntuaciones.
   Nube	              Aiven	                            Almacenamiento remoto de la base de datos.
   Variables Entorno	  vlucas/phpdotenv	                Gestión segura de variables de entorno.
   DevOps	            Git/GitHub, Docker	              Control de versiones, contenedores y despliegue en Render.
