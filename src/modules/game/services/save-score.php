@@ -4,8 +4,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../../user/db/GamePDO.php';
-require_once __DIR__ . '/../../user/models/game.php';
+require_once __DIR__ . '/../../game/db/GamePDO.php';
+require_once __DIR__ . '/../../game/models/Game.php';
 $pdo = require_once __DIR__ . '/../../../global/db/init.php';
 
 $gamePDO = new GamePDO($pdo);
@@ -14,8 +14,10 @@ $gamePDO = new GamePDO($pdo);
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Validar que se recibieron todos los datos necesarios
-if (!isset($data['level']) || !isset($data['pve']) || !isset($data['time']) ||
-    !isset($data['setsFound']) || !isset($data['errors']) || !isset($data['score']) || !isset($data['date'])) {
+if (
+    !isset($data['level']) || !isset($data['pve']) || !isset($data['time']) ||
+    !isset($data['setsFound']) || !isset($data['errors']) || !isset($data['score']) || !isset($data['date'])
+) {
     echo json_encode(['success' => false, 'error' => 'Datos incompletos']);
     exit;
 }
@@ -63,7 +65,6 @@ try {
     } else {
         echo json_encode(['success' => false, 'error' => 'Error al guardar el score']);
     }
-
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()]);
 } catch (Exception $e) {
