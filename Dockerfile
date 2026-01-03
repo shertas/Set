@@ -23,6 +23,17 @@ RUN composer install --no-dev --no-interaction --optimize-autoloader || true
 # Apache sirve todo el proyecto (no solo /public)
 RUN a2enmod rewrite
 
+#Permisos para apache
+RUN echo '<Directory /var/www/html/public>\n\
+    AllowOverride None\n\
+    Require all granted\n\
+</Directory>' > /etc/apache2/conf-available/public.conf \
+  && a2enconf public
+
+#Permisos para Render
+RUN chown -R www-data:www-data /var/www/html \
+  && chmod -R 755 /var/www/html
+
 # Copy entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
