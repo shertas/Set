@@ -23,16 +23,13 @@ RUN composer install --no-dev --no-interaction --optimize-autoloader || true
 # Apache sirve todo el proyecto (no solo /public)
 RUN a2enmod rewrite
 
-#Permisos para apache
-RUN echo '<Directory /var/www/html/public>\n\
-    AllowOverride None\n\
-    Require all granted\n\
-</Directory>' > /etc/apache2/conf-available/public.conf \
-  && a2enconf public
+# Configurar /public como la raíz del sitio (DocumentRoot)
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-#Permisos para Render
-RUN chown -R www-data:www-data /var/www/html \
-  && chmod -R 755 /var/www/html
+# CRUCIAL: Añadir un Alias para que los archivos estáticos de /src sean accesibles vía URL
+RUN echo 'Alias /src "/var/www/html/src"' >> /etc/apache2/apache2.conf
 
 # Copy entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
