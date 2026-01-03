@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once __DIR__ . '/../../user/db/GamePDO.php';
+require_once __DIR__ . '/../../game/db/GamePDO.php';
 $pdo = require_once __DIR__ . '/../../../global/db/init.php';
 
 header('Content-Type: application/json');

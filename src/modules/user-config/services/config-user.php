@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../user/models/user.php';
+require_once __DIR__ . '/../../user/models/User.php';
 require_once __DIR__ . '/../../user/db/UserPDO.php';
 $pdo = require_once __DIR__ . '/../../../global/db/init.php';
 
@@ -48,7 +48,6 @@ if ($action === 'delete') {
         } else {
             echo json_encode(['error' => 'Error al eliminar el usuario']);
         }
-
     } catch (Exception $e) {
         http_response_code(500);
         echo json_encode(['error' => 'Server error: ' . $e->getMessage()]);
@@ -93,9 +92,7 @@ try {
     } else {
         echo json_encode(['error' => 'Error al actulizar el usuario']);
     }
-
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Server error: ' . $e->getMessage()]);
 }
-
