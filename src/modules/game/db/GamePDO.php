@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../../global/db/db.php';
-require_once __DIR__ . '/../models/game.php';
+require_once __DIR__ . '/../models/Game.php';
 
 class GamePDO
 {

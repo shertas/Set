@@ -89,12 +89,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     })
     endGameButton.addEventListener("click", () => {
-        gameEnded = endGame()
+        gameState.gameEnded = endGame()
         saveScore(scoreboard, pve, level)
     })
 
     document.addEventListener("timerFinished", () => {
-        gameEnded = endGame()
+        gameState.gameEnded = endGame()
         saveScore(scoreboard, pve, level)
     })
 
