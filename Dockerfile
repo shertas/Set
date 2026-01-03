@@ -20,12 +20,8 @@ COPY . /var/www/html
 # Install PHP deps
 RUN composer install --no-dev --no-interaction --optimize-autoloader || true
 
-# Set Apache document root to public/
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri 's!DocumentRoot /var/www/html!DocumentRoot ${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
-  && sed -ri 's!<Directory /var/www/html>!<Directory ${APACHE_DOCUMENT_ROOT}>!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
-  && a2enmod rewrite \
-  && echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# Apache sirve todo el proyecto (no solo /public)
+RUN a2enmod rewrite
 
 # Copy entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
