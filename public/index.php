@@ -7,7 +7,7 @@ $userBD = new UserPDO($pdo);
 
 //Si se ha enviado el formulario de login, procesamos la petición:
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" ?? 'GET')  { 
 
     $nombre = $_POST['user'] ?? null;
     $pass    = $_POST['password'] ?? null;
