@@ -110,3 +110,4 @@ error_log
 # Archivos de configuración local o pruebas temporales
 /local/
 tests_local/
+/nbproject/private/
