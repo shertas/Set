@@ -996,6 +996,12 @@ form input:focus {
         margin: auto;
     }
 
+    .toast {
+    font-size: 1.1rem;    /* Texto un poco más grande */
+    padding: 14px 22px;   /* Más espacio interno para que se vea "robusto" */
+    min-width: 260px;     /* Evita que sea muy estrecho */
+    }
+
 } 
 
 /* Tablets */
@@ -1110,5 +1116,11 @@ form input:focus {
 
     .error-message{
         margin: auto;
+    }
+        
+    .toast {
+        font-size: 1.1rem;    /* Texto un poco más grande */
+        padding: 14px 22px;   /* Más espacio interno para que se vea "robusto" */
+        min-width: 260px;     /* Evita que sea muy estrecho */
     }
 }
