@@ -9,7 +9,8 @@ export async function opponentFindSet(gameState, selectedCards) {
 
     const setFound = existsASetOnTable()
     if (!setFound) return
-
+    unselectCards()
+    selectedCards.clear()
     autoSelectCards(setFound, selectedCards)
     const selectedIds = Array.from(selectedCards)
     const isSet = resolveSetPVE(selectedIds)
