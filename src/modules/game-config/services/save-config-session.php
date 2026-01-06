@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../../global/services/session.php';
+ensure_session();
 
 // Recibir datos JSON desde JS
 $data = json_decode(file_get_contents("php://input"), true);

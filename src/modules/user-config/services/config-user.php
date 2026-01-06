@@ -1,8 +1,10 @@
 <?php
-
 require_once __DIR__ . '/../../user/models/User.php';
 require_once __DIR__ . '/../../user/db/UserPDO.php';
-$pdo = require_once __DIR__ . '/../../../global/db/init.php';
+// Obtener conexión PDO (si ya existe, usarla; si no, cargarla)
+if (!isset($pdo)) {
+    $pdo = require __DIR__ . '/../../../global/db/init.php';
+}
 
 $userBD = new UserPDO($pdo);
 

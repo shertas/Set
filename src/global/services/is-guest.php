@@ -1,9 +1,7 @@
 <?php
 // Endpoint para verificar si el usuario es invitado
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../services/session.php';
+ensure_session();
 
 header('Content-Type: application/json');
 

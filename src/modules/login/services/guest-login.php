@@ -1,6 +1,6 @@
 <?php
-
-session_start();
+require_once __DIR__ . '/../../../global/services/session.php';
+ensure_session();
 
 // Iniciar sesión como invitado
 $_SESSION['usuario']    = 'invitado';
