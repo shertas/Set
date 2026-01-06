@@ -1,7 +1,7 @@
-import { autoSelectCards, unselectCards } from "/src/modules/game/components/deck/card-selection.js"
-import { existsASetOnTable } from "/src/modules/game/services/check-set.js"
-import { resolveSetPVE } from "/src/modules/game/services/resolve-set.js"
-import { addCards } from "/src/modules/game/services/add-cards.js"
+import { autoSelectCards, unselectCards } from "/modules/game/components/deck/card-selection.js"
+import { existsASetOnTable } from "/modules/game/services/check-set.js"
+import { resolveSetPVE } from "/modules/game/services/resolve-set.js"
+import { addCards } from "/modules/game/services/add-cards.js"
 
 
 export async function opponentFindSet(gameState, selectedCards) {

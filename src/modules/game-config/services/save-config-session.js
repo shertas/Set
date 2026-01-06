@@ -1,5 +1,5 @@
 export function saveConfigSession(levelValue, pve) {
-    fetch("/src/modules/game-config/services/save-config-session.php", {
+    fetch("/modules/game-config/services/save-config-session.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ level: levelValue, pve: pve })
@@ -10,7 +10,7 @@ export function saveConfigSession(levelValue, pve) {
         })
         .then(data => {
             if (data.success) {
-                window.location.href = "/src/modules/game/services/new-game.php";
+                window.location.href = window.location.pathname + '?page=new-game';
             }
         })
         .catch(error => console.error("Error al guardar la sesión:", error));

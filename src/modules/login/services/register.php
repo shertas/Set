@@ -13,27 +13,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Validaciones
     if (empty($newUser) || empty($newPass) || empty($confirmPass)) {
-        header("Location: ../views/login.html?error=campos_vacios");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&error=campos_vacios');
         exit;
     }
 
     if (strlen($newUser) < 4) {
-        header("Location: ../views/login.html?error=usuario_corto");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&error=usuario_corto');
         exit;
     }
 
     if (strlen($newPass) < 4) {
-        header("Location: ../views/login.html?error=password_corta");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&error=password_corta');
         exit;
     }
 
     if ($newPass !== $confirmPass) {
-        header("Location: ../views/login.html?error=passwords_no_coinciden");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&error=passwords_no_coinciden');
         exit;
     }
 
     if ($userBD->userExists($newUser)) {
-        header("Location: ../views/login.html?error=usuario_existe");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&error=usuario_existe');
         exit;
     }
 
@@ -41,14 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $created = $userBD->userCreate($newUser, $newPass);
 
     if ($created) {
-        header("Location: ../views/login.html?success=usuario_creado");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&success=usuario_creado');
         exit;
     } else {
-        header("Location: ../views/login.html?error=error_creacion");
+        header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login&error=error_creacion');
         exit;
     }
 
 } else {
-    header("Location: ../views/login.html");
+    header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=login');
     exit;
 }

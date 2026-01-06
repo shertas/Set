@@ -1,4 +1,4 @@
-import { opponentFindSet } from "/src/modules/game/services/opponent-action.js"
+import { opponentFindSet } from "/modules/game/services/opponent-action.js"
 
 let timeSetInterval = null
 export function timerSetStart(opponentSpeed, gameState, selectedCards) {

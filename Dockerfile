@@ -28,6 +28,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN printf '\
 Alias /src "/var/www/html/src"\n\
 Alias /global "/var/www/html/src/global"\n\
+Alias /modules "/var/www/html/src/modules"\n\
 \n\
 <Directory "/var/www/html/src">\n\
     AllowOverride All\n\

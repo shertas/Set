@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PROYECTO SET - Bienvenida</title>
       <link rel="icon" type="image/png" href="/assets/img/Set favicon.png">
-  <link rel="stylesheet" href="../../../global/styles/styles.css">
+  <link rel="stylesheet" href="/global/styles/styles.css">
 </head>
 
 <body class="body-main" data-page="welcome">
@@ -21,11 +21,11 @@
       <!--Menú principal-->
       <nav>
         <ul class="menu">
-          <li><a data-page="welcome" href="welcome.html">Bienvenida</a></li>
-          <li><a href="/src/modules/game/services/new-game.php">Nuevo juego</a></li>
-          <li><a href="/src/modules/game-config/views/game-config.html">Configuración de partida</a></li>
-          <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
-          <li><a href="../../rankings/views/global-ranking.html">Ranking global</a></li>
+          <li><a data-page="welcome" href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=welcome">Bienvenida</a></li>
+          <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=game">Nuevo juego</a></li>
+          <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=game-config">Configuración de partida</a></li>
+          <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=user-ranking">Histórico de partidas</a></li>
+          <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=global-ranking">Ranking global</a></li>
         </ul>
       </nav>
 
@@ -41,8 +41,8 @@
         <div class="user-avatar" id="avatar">U</div>
 
         <div class="user-dropdown" id="userDropdown">
-          <a href="../../../modules/user-config/views/config-user.html">Configuración</a>
-          <a href="/../src/modules/login/views/login.html">Cerrar sesión</a>
+          <a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=config-user">Configuración</a>
+          <a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=login">Cerrar sesión</a>
         </div>
       </div>
     </header>
@@ -51,15 +51,15 @@
     <nav id="mobile-menu">
       <ul>
         <hr>                    
-        <li><a data-page="welcome" href="welcome.html" data-page="welcome">Bienvenida</a></li>
+        <li><a data-page="welcome" href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=welcome">Bienvenida</a></li>
         <hr>
-        <li><a href="/src/modules/game/services/new-game.php">Nuevo juego</a></li>
+        <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=game">Nuevo juego</a></li>
         <hr>
-        <li><a href="/src/modules/game-config/views/game-config.html">Configuración de partida</a></li>
+        <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=game-config">Configuración de partida</a></li>
         <hr>
-        <li><a href="../../rankings/views/user-ranking.html">Histórico de partidas</a></li>
+        <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=user-ranking">Histórico de partidas</a></li>
         <hr>
-        <li><a href="../../rankings/views/global-ranking.html">Ranking global</a></li>
+        <li><a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=global-ranking">Ranking global</a></li>
       </ul>
 
       <!--Selector de tema-->
@@ -125,10 +125,10 @@
     </div>
   </main>
 
-  <script src="../../../global/services/user-menu.js"></script>
-  <script src="../../../global/services/theme.js"></script>
-  <script src="../../../global/services/mobile-menu.js"></script>
-  <script src="../../../global/services/current-page.js"></script>
+  <script src="/global/services/user-menu.js"></script>
+  <script src="/global/services/theme.js"></script>
+  <script src="/global/services/mobile-menu.js"></script>
+  <script src="/global/services/current-page.js"></script>
 
 </body>
 </html>

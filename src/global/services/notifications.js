@@ -69,3 +69,9 @@ export function showConfirm(message, { confirmText = 'Aceptar', cancelText = 'Ca
     close: remove
   };
 }
+
+// Expose helpers to window for non-module scripts (backwards compatible)
+if (typeof window !== 'undefined') {
+  window.showToast = showToast;
+  window.showConfirm = showConfirm;
+}

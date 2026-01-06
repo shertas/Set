@@ -1,7 +1,7 @@
 // Cargar el ranking global y rellenar tabla escritorio y móvil (compacta)
 (function() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '../services/get-global-ranking.php', true);
+    xhr.open('GET', '/modules/rankings/services/get-global-ranking.php', true);
 
     xhr.onload = function() {
         if (xhr.status === 200) {
