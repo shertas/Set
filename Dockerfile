@@ -1,6 +1,6 @@
 FROM php:8.1-apache
 
-# Dependencias básicas
+# Dependencias
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     default-mysql-client \
@@ -19,15 +19,18 @@ RUN composer install --no-dev --no-interaction || true
 # Apache
 RUN a2enmod rewrite
 
-# DocumentRoot clásico (opcional)
+# DocumentRoot → public
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
-# Valida rutas del proyecto
+# Alias para src (PHP + JS)
 RUN printf '\
 Alias /src "/var/www/html/src"\n\
+Alias /global "/var/www/html/src/global"\n\
+\n\
 <Directory "/var/www/html/src">\n\
+    AllowOverride All\n\
     Require all granted\n\
 </Directory>\n\
 ' >> /etc/apache2/apache2.conf
