@@ -1,5 +1,5 @@
-import { timerStop } from "/src/modules/game/services/stopwatch.js"
-import { timerSetStop } from "/src/modules/game/services/opponent-set-interval.js"
+import { timerStop } from "/modules/game/services/stopwatch.js"
+import { timerSetStop } from "/modules/game/services/opponent-set-interval.js"
 
 function showEndGamePanel() {
     const overlay = document.getElementById("endGameOverlay");

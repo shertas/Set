@@ -8,5 +8,5 @@ $_SESSION['is_guest']   = true;
 $_SESSION['pass']       = 'invitado';
 
 // Redirigir a la página de bienvenida
-header("Location: ../views/welcome.html");
+header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=welcome');
 exit;

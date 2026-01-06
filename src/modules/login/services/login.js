@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (username === "" || password === "") {
             event.preventDefault();
-            alert("Por favor, complete todos los campos.");
+            // Mostrar como error (no success)
+            showToast("Por favor, complete todos los campos.", { type: 'error', duration: 2200 })
         }
     });
 

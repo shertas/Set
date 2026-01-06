@@ -18,14 +18,6 @@ $username = $_SESSION['usuario'];
 // Crear instancia de GamePDO
 $gamePDO = new GamePDO($pdo);
 
-// Obtener el id del  
-/*$idUser = $gamePDO->getUserIdByUsername($username);
-
-if (!$idUser) {
-    echo json_encode(['success' => false, 'error' => 'Usuario no encontrado']);
-    exit;
-}*/
-
 // Obtener partidas usuarios
 $games = $gamePDO->getAllGamesByScore();
 

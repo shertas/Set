@@ -5,5 +5,5 @@ $pve = $_SESSION['pve'] ?? false;
 $pveParam = $pve ? '1' : '0';
 
 
-header("Location: ../../game/views/game.html?level={$level}&pve={$pveParam}");
+header('Location: ' . $_SERVER['SCRIPT_NAME'] . '?page=game&level=' . $level . '&pve=' . $pveParam);
 exit();

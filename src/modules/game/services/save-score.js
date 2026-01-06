@@ -10,7 +10,7 @@ export function saveScore(scoreboard, pve, level) {
     }
 
     // Enviar los datos al servidor para guardarlos en la base de datos
-    fetch("/src/modules/game/services/save-score.php", {
+    fetch("/modules/game/services/save-score.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(gameState),

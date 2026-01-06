@@ -1,5 +1,3 @@
-
-
 // Funcionalidad para mostrar/ocultar contraseña
 document.getElementById("togglePassword").addEventListener("click", function() {
     const passwordInput = document.getElementById("password");
@@ -82,7 +80,7 @@ function send_Ajax(name, password){
     formData.append('name', name);
     formData.append('password', password);
 
-    fetch('../services/config-user.php', {
+    fetch('/modules/user-config/services/config-user.php', {
         method: 'POST',
         body: formData
     })
@@ -118,7 +116,7 @@ function deleteUser() {
     const formData = new FormData();
     formData.append('action', 'delete');
 
-    fetch('../services/config-user.php', {
+    fetch('/modules/user-config/services/config-user.php', {
         method: 'POST',
         body: formData
     })
@@ -130,7 +128,7 @@ function deleteUser() {
         } else {
             alert(data.success);
             // Redirigir al login después de eliminar
-            window.location.href = '/src/modules/login/views/login.html';
+            window.location.href = window.location.pathname + '?page=login';
         }
     })
     .catch(error => {

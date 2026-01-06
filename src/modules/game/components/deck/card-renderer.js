@@ -31,7 +31,7 @@ export async function renderCards(cards) {
 }
 
 async function renderCard(card) {
-  const svgContent = await loadSVG(`.././svg/${card.shape}.svg`)
+  const svgContent = await loadSVG(`../../svg/${card.shape}.svg`)
   const dataAttributes = `data-color="${card.color}" data-fill="${card.fill}" data-number="${card.number}" data-shape="${card.shape}"`
   let shapesHTML = ""
 
@@ -48,10 +48,12 @@ async function renderCard(card) {
   return html
 }
 
-// Cargar SVG desde archivo
+// Cargar SVG desde archivo (resuelve a path absoluto en /modules/game/svg)
 async function loadSVG(path) {
-  const response = await fetch(path)
-  if (!response.ok) throw new Error(`No se pudo cargar el SVG: ${path}`)
+  const filename = path.split('/').pop()
+  const url = `/modules/game/svg/${filename}`
+  const response = await fetch(url)
+  if (!response.ok) throw new Error(`No se pudo cargar el SVG: ${url} (${response.status})`)
   return await response.text()
 }
 

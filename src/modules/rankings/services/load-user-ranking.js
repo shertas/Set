@@ -1,7 +1,7 @@
 // Cargar el histórico de partidas del usuario
 (function() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '../services/get-user-games.php', true);
+    xhr.open('GET', '/modules/rankings/services/get-user-games.php', true);
 
     xhr.onload = function() {
         if (xhr.status === 200) {

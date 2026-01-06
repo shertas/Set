@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso Denegado - PROYECTO SET</title>
     <link rel="icon" type="image/png" href="/assets/img/Set favicon.png">
-    <link rel="stylesheet" href="../../../global/styles/styles.css">
+    <link rel="stylesheet" href="/global/styles/styles.css">
 </head>
 
 <body class="body-main">
@@ -19,8 +19,8 @@
             <p>Los invitados pueden jugar pero no acceder al histórico de partidas ni configuración de usuario.</p>
 
             <div style="margin-top: 30px;">
-                <a href="login.html" class="btn-primary">Iniciar Sesión</a>
-                <a href="welcome.html" class="btn-secondary">Volver</a>
+                <a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=login" class="btn-primary">Iniciar Sesión</a>
+                <a href="<?= $_SERVER['SCRIPT_NAME'] ?>?page=welcome" class="btn-secondary">Volver</a>
             </div>
         </div>
     </div>
