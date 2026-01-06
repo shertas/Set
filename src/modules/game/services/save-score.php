@@ -1,12 +1,13 @@
 <?php
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../../../global/services/session.php';
+ensure_session();
 
 require_once __DIR__ . '/../../game/db/GamePDO.php';
 require_once __DIR__ . '/../../game/models/Game.php';
-$pdo = require_once __DIR__ . '/../../../global/db/init.php';
+// Obtener conexión PDO (si ya existe, usarla; si no, cargarla)
+if (!isset($pdo)) {
+    $pdo = require __DIR__ . '/../../../global/db/init.php';
+}
 
 $gamePDO = new GamePDO($pdo);
 
