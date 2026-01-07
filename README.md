@@ -23,7 +23,7 @@
   Área	              Tecnología	                      Descripción
   Frontend	          HTML5, CSS3, JavaScript	          Estructura, estilos (con Tailwind CSS) e interactividad.
   Backend	            PHP (>=7.4)                       Lógica del juego, control de sesiones y gestión de datos.
-  BBDD	                MySQL / MariaDB	                  Gestor de BBDD para la persistencia de usuarios y puntuaciones.
+  BBDD	              MySQL / MariaDB	                  Gestor de BBDD para la persistencia de usuarios y puntuaciones.
   Nube	              Aiven	                            Almacenamiento remoto de la base de datos.
   Variables Entorno	  vlucas/phpdotenv	                Gestión segura de variables de entorno.
   DevOps	            Git/GitHub, Docker	              Control de versiones, contenedores y despliegue en Render.
@@ -32,7 +32,37 @@
 
   La aplicación es una web app pura, por lo que no requiere instalación local compleja por parte del usuario final. El proyecto está configurado para un entorno de desarrollo profesional utilizando Docker para la contenedorización y Render para el despliegue continuo.
   Una vez desplegada, simplemente se accede a través de una URL pública.
-  URL de la Demo: [Insertar aquí el enlace de Render]
+  URL de la Demo: [https://set-game-8god.onrender.com]
+
+▶️ Ejecución en Local (XAMPP)
+
+  Para facilitar la ejecución del proyecto en entorno local sin necesidad de Docker, se ha configurado Apache mediante un VirtualHost personalizado.
+  La aplicación utiliza la carpeta `public/` como raíz del servidor web, mientras que el código del backend y los recursos compartidos se mantienen en `src/`, siguiendo una arquitectura modular.
+  La configuración necesaria en el archivo `httpd-vhosts.conf` es la siguiente:
+
+  Archivo:
+  C:\xampp\apache\conf\extra\httpd-vhosts.conf
+
+  <VirtualHost *:80>
+      ServerName set.local
+      DocumentRoot "C:/xampp/htdocs/Proyecto Set/Set/public"
+
+      <Directory "C:/xampp/htdocs/Proyecto Set/Set/public">
+          AllowOverride All
+          Require all granted
+      </Directory>
+
+      Alias /global "C:/xampp/htdocs/Proyecto Set/Set/src/global"
+      Alias /modules "C:/xampp/htdocs/Proyecto Set/Set/src/modules"
+
+      <Directory "C:/xampp/htdocs/Proyecto Set/Set/src">
+          AllowOverride All
+          Require all granted
+      </Directory>
+  </VirtualHost>
+
+  Gracias al uso de alias, se permite el acceso a los recursos estáticos (CSS y JavaScript)ubicados en `src/global` y a los distintos módulos de la aplicación sin necesidad de duplicar archivos ni alterar la estructura del proyecto.
+  Una vez aplicada esta configuración y reiniciado Apache, la aplicación queda accesible desde el navegador mediante la URL: http://set.local
 
 🧑‍💻 Autoría y Contacto
 
