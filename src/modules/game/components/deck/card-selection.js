@@ -47,5 +47,5 @@ export function autoSelectCards(cardIds, selectedCards) {
         if (!el) return
 
         selectCard(el, selectedCards)
-    });
+    })
 }
