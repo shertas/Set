@@ -1,4 +1,11 @@
 <?php
+// Asegurarse de que la sesión está iniciada antes de acceder a $_SESSION
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+// Devolver siempre JSON para las respuestas AJAX
+header('Content-Type: application/json');
+
 require_once __DIR__ . '/../../user/models/User.php';
 require_once __DIR__ . '/../../user/db/UserPDO.php';
 // Obtener conexión PDO (si ya existe, usarla; si no, cargarla)
