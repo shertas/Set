@@ -25,7 +25,7 @@ export function pveRules(level, pve) {
     if (pve) {
         const scoreboardDiv = document.getElementById('scoreboard')
         const text = '<p id="opponentScore">Puntuación oponente: <span id="opponentScoreCount">0</span></p>'
-        scoreboardDiv.innerHTML += text;
+        scoreboardDiv.innerHTML += text
     }
     switch (level) {
         case 1: // Easy

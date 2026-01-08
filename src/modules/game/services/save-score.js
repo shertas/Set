@@ -19,12 +19,12 @@ export function saveScore(scoreboard, pve, level) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                console.log("Score guardado correctamente:", gameState);
+                console.log("Score guardado correctamente:", gameState)
             } else {
-                console.error("Error al guardar el score:", data.error);
+                console.error("Error al guardar el score:", data.error)
             }
         })
         .catch(error => {
-            console.error("Error al guardar el score:", error);
-        });
+            console.error("Error al guardar el score:", error)
+        })
 }
